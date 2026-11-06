@@ -58,8 +58,10 @@
 └───────────────────────────┬────────────────────────────┘
                             ▼
 ┌────────────────────────────────────────────────────────┐
-│  04. BEHIND THE SYSTEMS (Light Mist #E9E3F0)            │
+│  04. BEHIND THE SYSTEMS & ACTIVITY (Light Mist #E9E3F0) │
 │      Architecture Schematics • Concurrency • Postgres   │
+│      GitHub Contribution Heatmap (1,010+ Annual Commits)│
+│      Violet-Themed Activity Grid & Language Telemetry   │
 └───────────────────────────┬────────────────────────────┘
                             ▼
 ┌────────────────────────────────────────────────────────┐

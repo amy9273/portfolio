@@ -58,7 +58,9 @@
 1. **Section 01 — Hero (Dark Violet)**: Full-viewport introduction (`100svh`), custom `A/B` monogram, interactive 3D orbital core, responsive typography, and primary actions.
 2. **Section 02 — About (Light Lavender Editorial)**: Personal narrative ("Curious by nature. Developer by practice"), BSIT background at De La Salle Lipa, manga/manhwa/tech interests, and engineering philosophy.
 3. **Section 03 — Selected Work (Dark Immersive Gallery)**: Featured case studies with architecture schematics, key implementation decisions, and GitHub repository links.
-4. **Section 04 — Behind the Systems (Light Technical Deep-Dive)**: The three architectural pillars (Architecture, Data, Reliability) highlighting tenant isolation, concurrency, and automated testing.
+4. **Section 04 — Behind the Systems (Light Technical Deep-Dive & Activity Heatmap)**:
+   - The three architectural pillars (Architecture, Data, Reliability) highlighting tenant isolation, concurrency, and automated testing.
+   - **GitHub Activity & Contribution Radar**: Featuring verified **1,010+ contributions in the last year**, 16 public repositories, and language distribution telemetry (Java, TypeScript, Python, SQL) styled in the NEBULA violet palette.
 5. **Section 05 — Experience, Education & Certifications (Dark Timeline & Credential Cards)**:
    - Factual chronological milestones (De La Salle Lipa BSIT 2027, Univ of Cabuyao Immersion 2022-2023).
    - **Individual Verified Certifications Showcase**: 9 standalone credential cards with category filters (All, Networking, Databases & SQL, Python & Data, Computer Science), competency tags, verification badges, and 1-click verified PDF preview/download links.
