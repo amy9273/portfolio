@@ -70,8 +70,10 @@
 
 - **Engineer**: Angel Amaya Balion
 - **Email**: [angelamaya.balion@gmail.com](mailto:angelamaya.balion@gmail.com)
+- **Mobile / Phone**: [+63 976 456 7794](tel:09764567794) (`09764567794`)
+- **LinkedIn**: [linkedin.com/in/angel-amayabalion](https://www.linkedin.com/in/angel-amayabalion/)
 - **GitHub**: [@amy9273](https://github.com/amy9273)
-- **LinkedIn**: [linkedin.com/in/angel-amayabalion](https://linkedin.com/in/angel-amayabalion)
+- **Facebook**: [facebook.com/AngelAmaya.Balion](https://www.facebook.com/AngelAmaya.Balion)
 
 ---
 

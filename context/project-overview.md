@@ -25,7 +25,13 @@
    - Values clear architecture diagrams, request flows, and test coverage evidence over generic skill percentage bars.
 2. **The Tech Recruiter / University Talent Scout**:
    - Searches for clear role alignment: Software Developer / Backend Developer internships (Summer 2025/2026 and new-grad 2027).
-   - Demands instant access to GitHub (`github.com/amy9273`), LinkedIn (`linkedin.com/in/angel-amayabalion`), email (`angelamaya.balion@gmail.com`), and 1-click résumé PDF download.
+   - Demands instant access to:
+     - Email: `angelamaya.balion@gmail.com`
+     - Phone: `09764567794` / `+63 976 456 7794`
+     - LinkedIn: `linkedin.com/in/angel-amayabalion`
+     - GitHub: `github.com/amy9273`
+     - Facebook: `facebook.com/AngelAmaya.Balion`
+     - 1-click résumé PDF download.
 3. **The Design-Conscious Senior Technologist**:
    - Evaluates creative polish, responsive typography (`clamp()`), micro-interactions, accessibility (WCAG AA contrast), and performance (smooth 60fps animations with graceful mobile fallbacks).
 
