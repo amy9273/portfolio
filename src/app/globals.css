@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-void: #171021;
+  --color-aubergine: #29183B;
+  --color-royal-violet: #7041A6;
+  --color-electric-lavender: #A77BEB;
+  --color-pale-lilac: #D8C5FF;
+  --color-cloud: #F6F3FA;
+  --color-mist: #E9E3F0;
+  --color-graphite: #22202A;
+  --color-muted-mauve: #9D8AAE;
+
+  --radius-card: 1.25rem;
+  --radius-panel: 1.75rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background-color: var(--color-void);
+  color: #F6F3FA;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom violet scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #171021;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #29183B;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7041A6;
+}
+
+/* Orbital Grid Utilities */
+.orbital-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(167, 123, 235, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(167, 123, 235, 0.04) 1px, transparent 1px);
+}
+
+.light-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(112, 65, 166, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(112, 65, 166, 0.05) 1px, transparent 1px);
+}

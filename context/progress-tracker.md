@@ -1,6 +1,6 @@
 # Progress Tracker — A/B Portfolio
 
-## Current Status: Unit 00 Complete (Project Context & Specifications Established) 🚀
+## Current Status: Unit 01 Complete (Scaffold, Design Tokens, Monogram & Navigation) 🚀
 
 ---
 
@@ -9,8 +9,8 @@
 | Phase | Description | Status |
 | :--- | :--- | :--- |
 | **Unit 00: Specs, Brand & Architecture Blueprint** | Context documentation, color tokens, GitHub project mapping, and quality guidelines. | ✅ Complete |
-| **Unit 01: Next.js 15 Scaffold, Theme & Monogram** | Next.js 15 App Router initialization, Tailwind CSS tokens, Space Grotesk/Inter fonts, custom vector `A/B` monogram, and sticky navigation. | ⏳ Ready to Start |
-| **Unit 02: Startup Preloader & Hero Section** | 100svh dark violet hero, responsive typography, introduction copy, action CTA buttons, and interactive startup preloader. | 📋 Pending |
+| **Unit 01: Next.js 15 Scaffold, Theme & Monogram** | Next.js 15 App Router initialization, Tailwind CSS tokens, Space Grotesk/Inter fonts, custom vector `A/B` monogram, and sticky navigation. | ✅ Complete |
+| **Unit 02: Startup Preloader & Hero Section** | 100svh dark violet hero, responsive typography, introduction copy, action CTA buttons, and interactive startup preloader. | ⏳ Ready to Start |
 | **Unit 03: 3D Violet Orbital Core & WebGL Engine** | Procedural Three.js glass & metallic orbital rings canvas, mouse parallax damping, and mobile WebP/CSS fallback. | 📋 Pending |
 | **Unit 04: Editorial About & Personal Journey** | Light Cloud editorial section, BSIT narrative (De La Salle Lipa), personal interests (manga/tech), and education badge. | 📋 Pending |
 | **Unit 05: Selected Work & Featured Case Studies** | Dark immersive gallery featuring Tier 1 projects (B2B Billing, IncidentPulse, Rate Limiter, Kamunica) and secondary experiments (Malaya, Gala PH, VetCare). | 📋 Pending |
