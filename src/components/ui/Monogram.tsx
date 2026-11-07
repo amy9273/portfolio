@@ -61,7 +61,7 @@ export function Monogram({ size = 36, className = '', showText = false }: Monogr
       {showText && (
         <div className="flex flex-col text-left leading-none font-sans">
           <span className="font-display font-bold text-sm tracking-tight text-white group-hover:text-electric-lavender transition-colors">
-            ANGEL AMAYA BALION
+            Amaya
           </span>
           <span className="font-mono text-[10px] text-muted-mauve tracking-widest uppercase mt-0.5">
             Software Developer

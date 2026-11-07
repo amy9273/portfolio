@@ -77,6 +77,27 @@ export const FEATURED_PROJECTS: ProjectItem[] = [
   },
   {
     id: '04',
+    slug: 'malaya',
+    title: 'Malaya — Webtoon Reader',
+    tagline: 'A simple continuous-scroll reader for manga and manhwa.',
+    tier: 1,
+    category: 'Data & Web',
+    technologies: ['Next.js 15 PWA', 'TypeScript', 'Supabase', 'MangaDex API', 'Tailwind CSS'],
+    description:
+      'A personal project born from my habit of reading manhwa. I built a mobile-friendly web app with a continuous vertical reading strip, connecting to the MangaDex API and using Supabase to save reading history and bookmarks.',
+    architectureHighlights: [
+      'Continuous vertical scroll reader designed for comfortable reading on mobile and desktop',
+      'Image proxy route handler to fetch chapter pages cleanly and bypass cross-origin restrictions',
+      'Supabase database and authentication to save bookmarks and reading history',
+      'Responsive PWA layout with offline reading support and clean touch navigation',
+    ],
+    proofOfWork: 'Automated test suite · Mobile PWA',
+    githubUrl: 'https://github.com/amy9273/malaya',
+    liveUrl: 'https://malaya-brown.vercel.app',
+    statusBadge: 'Next.js 15 / PWA',
+  },
+  {
+    id: '05',
     slug: 'kamunica',
     title: 'Kamunica — Filipino Sign Language Platform',
     tagline: 'A sign language learning app featuring a 3D animated avatar and gesture recognition.',
@@ -99,26 +120,6 @@ export const FEATURED_PROJECTS: ProjectItem[] = [
 ];
 
 export const SECONDARY_PROJECTS: ProjectItem[] = [
-  {
-    id: '05',
-    slug: 'malaya',
-    title: 'Malaya — Webtoon Reader',
-    tagline: 'A simple continuous-scroll reader for manga and manhwa.',
-    tier: 2,
-    category: 'Data & Web',
-    technologies: ['Next.js 15 PWA', 'TypeScript', 'Supabase', 'MangaDex API', 'Tailwind CSS'],
-    description:
-      'A personal project born from my habit of reading manhwa. I built a mobile-friendly web app with a continuous vertical reading strip, connecting to the MangaDex API and using Supabase to save reading history.',
-    architectureHighlights: [
-      'Continuous vertical scroll reader designed for comfortable reading on mobile',
-      'Image proxy route handler to fetch chapter pages cleanly',
-      'Supabase database and authentication to save bookmarks and reading history',
-    ],
-    proofOfWork: 'Automated test suite · Mobile PWA',
-    githubUrl: 'https://github.com/amy9273/malaya',
-    liveUrl: 'https://malaya-brown.vercel.app',
-    statusBadge: 'Next.js 15 / PWA',
-  },
   {
     id: '06',
     slug: 'gala-ph',

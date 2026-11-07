@@ -58,8 +58,11 @@ export function Navbar() {
         <div className="max-w-7xl mx-auto px-5 md:px-8 flex items-center justify-between">
           
           {/* Logo / Monogram */}
-          <Link href="#hero" className="flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-electric-lavender rounded-lg">
-            <Monogram size={38} showText={true} />
+          <Link href="#hero" className="flex items-center gap-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-electric-lavender rounded-xl group" aria-label="Amaya Home">
+            <Monogram size={38} showText={false} />
+            <span className="font-display font-bold text-sm text-white group-hover:text-electric-lavender transition-colors tracking-tight hidden sm:inline-block">
+              Amaya
+            </span>
           </Link>
 
           {/* Desktop Navigation Links */}

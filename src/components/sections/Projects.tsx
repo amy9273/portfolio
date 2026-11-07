@@ -33,7 +33,7 @@ export function Projects() {
     >
       <div className="max-w-5xl mx-auto space-y-10">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-royal-violet/20 pb-6">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-royal-violet/20 pb-6">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-royal-violet/15 border border-royal-violet/30 text-electric-lavender font-mono text-xs font-semibold mb-2">
               <FolderGit2 className="w-3.5 h-3.5" />
@@ -43,9 +43,10 @@ export function Projects() {
               Featured Projects.
             </h2>
           </div>
-          <p className="text-muted-mauve font-mono text-xs">
-            Viewing 1 project at a time • Click next or choose a tab
-          </p>
+          <div className="font-mono text-xs text-muted-mauve flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-emerald-400" />
+            <span>0{FEATURED_PROJECTS.length} SPOTLIGHT PROJECTS</span>
+          </div>
         </div>
 
         {/* Project Selector Tabs */}
@@ -75,7 +76,7 @@ export function Projects() {
           <div className="flex flex-wrap items-center justify-between gap-3 text-xs font-mono text-muted-mauve pb-4 border-b border-royal-violet/25">
             <div className="flex items-center gap-3">
               <span className="text-electric-lavender font-bold">
-                PROJECT {activeProject.id} / 04
+                PROJECT {activeProject.id} / 0{FEATURED_PROJECTS.length}
               </span>
               <span>•</span>
               <span className="text-pale-lilac">{activeProject.category}</span>
@@ -178,7 +179,7 @@ export function Projects() {
               </button>
 
               <span className="font-mono text-xs text-muted-mauve px-1">
-                {currentIndex + 1} / {FEATURED_PROJECTS.length}
+                0{currentIndex + 1} / 0{FEATURED_PROJECTS.length}
               </span>
 
               <button
@@ -204,7 +205,7 @@ export function Projects() {
             </span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {SECONDARY_PROJECTS.map((project) => (
               <div
                 key={project.id}

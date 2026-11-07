@@ -51,6 +51,10 @@ export const metadata: Metadata = {
     description:
       'Personal portfolio of Angel Amaya Balion, a 4th-year IT student at De La Salle Lipa interested in backend development, databases, and application systems.',
   },
+  icons: {
+    icon: '/images/logo.png',
+    apple: '/images/logo.png',
+  },
 };
 
 export default function RootLayout({
