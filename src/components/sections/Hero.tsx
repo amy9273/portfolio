@@ -1,9 +1,9 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import {
-  ArrowUpRight,
   Download,
   Terminal,
   Activity,
@@ -12,7 +12,6 @@ import {
   MapPin,
   Calendar,
 } from 'lucide-react';
-import { OrbitalCore } from '@/components/visuals/OrbitalCore';
 
 interface HeroProps {
   onReplayPreloader?: () => void;
@@ -42,9 +41,9 @@ export function Hero({ onReplayPreloader }: HeroProps) {
 
       {/* Main Grid Content */}
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 my-auto">
-        {/* Left Column: Natural Student Bio & Introduction */}
+        {/* Left Column: Natural Bio & Introduction */}
         <div className="lg:col-span-7 space-y-6">
-          {/* Status Capsule */}
+          {/* Status Capsule (Full Name Retained) */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-royal-violet/40 bg-royal-violet/10 text-electric-lavender font-mono text-xs">
             <span className="w-2 h-2 rounded-full bg-emerald-400" />
             <span className="font-semibold text-pale-lilac">ANGEL AMAYA BALION</span>
@@ -52,20 +51,20 @@ export function Hero({ onReplayPreloader }: HeroProps) {
             <span>BSIT @ DE LA SALLE LIPA</span>
           </div>
 
-          {/* Master Display Headline */}
+          {/* Master Display Headline (Amaya used here) */}
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-extrabold text-white tracking-tight leading-[1.08]">
-            Hi, I&apos;m Angel.{' '}
+            Hi, I&apos;m Amaya.{' '}
             <span className="bg-gradient-to-r from-pale-lilac via-electric-lavender to-royal-violet bg-clip-text text-transparent block mt-1">
               I build web applications and backend systems.
             </span>
           </h1>
 
-          {/* Subtitle - Natural, believable, humble */}
+          {/* Subtitle */}
           <p className="text-cloud/85 text-base sm:text-lg max-w-2xl leading-relaxed font-sans">
-            I&apos;m a 4th-year Information Technology student at De La Salle Lipa. Most of my work involves backend development with Java and Spring Boot, building web apps with TypeScript, and learning how databases and queues handle data behind the scenes.
+            I&apos;m a 4th-year Information Technology student at De La Salle Lipa. Most of my work involves backend development with Java and Spring Boot, web apps with TypeScript, and learning how databases and queues handle data behind the scenes.
           </p>
 
-          {/* Action Callouts */}
+          {/* Action Buttons */}
           <div className="flex flex-wrap items-center gap-4 pt-2">
             <Link
               href="#work"
@@ -94,7 +93,7 @@ export function Hero({ onReplayPreloader }: HeroProps) {
             </Link>
           </div>
 
-          {/* Verified Engineering Telemetry Ribbon */}
+          {/* Telemetry Ribbon */}
           <div className="pt-6 border-t border-royal-violet/20 flex flex-wrap gap-x-6 gap-y-2 text-xs font-mono text-muted-mauve">
             <div className="flex items-center gap-1.5">
               <Activity className="w-3.5 h-3.5 text-emerald-400" />
@@ -111,28 +110,58 @@ export function Hero({ onReplayPreloader }: HeroProps) {
           </div>
         </div>
 
-        {/* Right Column: 3D Orbital Canvas Target & Telemetry Deck */}
+        {/* Right Column: Amaya's Orbital Portrait Card (100% Reliable, No Empty Black Box) */}
         <div className="lg:col-span-5 flex flex-col items-center justify-center">
-          <div className="relative w-full max-w-[440px] aspect-square rounded-3xl bg-gradient-to-b from-aubergine/80 to-[#120B1C]/90 border border-royal-violet/40 p-7 flex flex-col justify-between overflow-hidden shadow-2xl shadow-royal-violet/20 group">
-            {/* Top Header */}
-            <div className="flex items-center justify-between font-mono text-[11px] text-muted-mauve">
+          <div className="relative w-full max-w-[420px] rounded-3xl bg-gradient-to-b from-aubergine/85 to-[#120B1C]/95 border border-royal-violet/40 p-6 sm:p-7 flex flex-col justify-between overflow-hidden shadow-2xl shadow-royal-violet/25">
+            {/* Top Card Header */}
+            <div className="flex items-center justify-between font-mono text-xs text-muted-mauve pb-4 border-b border-royal-violet/20">
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-electric-lavender animate-pulse" />
-                <span className="text-electric-lavender font-semibold">3D Canvas Experiment</span>
+                <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                <span className="text-pale-lilac font-semibold">Amaya Balion</span>
               </div>
-              <span className="px-2 py-0.5 rounded bg-royal-violet/20 text-pale-lilac border border-royal-violet/30 text-[10px]">
-                Three.js
+              <span className="px-2.5 py-0.5 rounded-full bg-royal-violet/20 text-electric-lavender border border-royal-violet/40 text-[10px] font-semibold">
+                DLSL BSIT &apos;27
               </span>
             </div>
 
-            {/* Orbital Stage Anchor */}
-            <div className="my-auto flex flex-col items-center justify-center text-center relative w-full h-[300px] sm:h-[340px]">
-              <OrbitalCore />
+            {/* Center Stage: Orbital Rings with Amaya's Photo */}
+            <div className="my-auto py-6 flex flex-col items-center justify-center text-center relative select-none">
+              {/* Outer Spinning Orbital Ring */}
+              <div className="relative w-52 h-52 sm:w-56 sm:h-56 flex items-center justify-center">
+                <div className="absolute inset-0 rounded-full border border-electric-lavender/30 border-dashed animate-[spin_25s_linear_infinite]" />
+                <div className="absolute inset-3 rounded-full border border-royal-violet/50 border-dotted animate-[spin_18s_linear_infinite_reverse]" />
+                
+                {/* Real Photo Avatar */}
+                <div className="relative z-10 w-36 h-36 sm:w-40 sm:h-40 rounded-full overflow-hidden border-2 border-electric-lavender/60 shadow-[0_0_35px_rgba(167,123,235,0.4)] bg-[#181024]">
+                  <Image
+                    src="/images/profile.png"
+                    alt="Angel Amaya Balion"
+                    fill
+                    sizes="160px"
+                    className="object-cover object-center"
+                    priority
+                  />
+                </div>
+
+                {/* Orbiting Telemetry Dot */}
+                <div className="absolute inset-0 animate-[spin_9s_linear_infinite] pointer-events-none">
+                  <div className="w-2.5 h-2.5 rounded-full bg-pale-lilac shadow-[0_0_10px_#D8C5FF] absolute top-2 left-1/2 -translate-x-1/2" />
+                </div>
+              </div>
+
+              <div className="mt-5 space-y-1">
+                <span className="font-display font-bold text-base text-white block">
+                  Software & Backend Developer
+                </span>
+                <span className="font-mono text-xs text-muted-mauve block">
+                  De La Salle Lipa • Batangas, Philippines
+                </span>
+              </div>
             </div>
 
             {/* Bottom Meta & Replay Trigger */}
             <div className="flex items-center justify-between font-mono text-[11px] text-muted-mauve pt-4 border-t border-royal-violet/20">
-              <span>Interactive Three.js Core</span>
+              <span className="text-pale-lilac/80">Student Developer</span>
               {onReplayPreloader && (
                 <button
                   onClick={onReplayPreloader}
@@ -147,7 +176,7 @@ export function Hero({ onReplayPreloader }: HeroProps) {
           </div>
 
           {/* Quick Stack Pill Badges */}
-          <div className="flex flex-wrap justify-center gap-1.5 mt-5 max-w-[440px]">
+          <div className="flex flex-wrap justify-center gap-1.5 mt-5 max-w-[420px]">
             {TECH_PILLS.map((pill) => (
               <span
                 key={pill}
@@ -164,7 +193,7 @@ export function Hero({ onReplayPreloader }: HeroProps) {
       <div className="relative z-10 max-w-7xl mx-auto w-full pt-8 flex items-center justify-between font-mono text-[11px] text-muted-mauve border-t border-royal-violet/15">
         <div className="flex items-center gap-2">
           <span className="w-1.5 h-1.5 rounded-full bg-electric-lavender" />
-          <span>SCROLL DOWN TO READ ABOUT MY PROJECTS & BACKGROUND</span>
+          <span>SCROLL DOWN TO EXPLORE PROJECTS & CODE</span>
         </div>
         <div className="hidden sm:flex items-center gap-4">
           <span>DE LA SALLE LIPA</span>

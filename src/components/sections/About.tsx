@@ -107,7 +107,7 @@ export function About() {
           {/* Right Column: Grounded, Honest Personal Narrative */}
           <div className="lg:col-span-7 space-y-6 text-base md:text-lg leading-relaxed text-graphite/90 font-sans">
             <p className="font-medium text-lg md:text-xl text-graphite">
-              Hi, I&apos;m Angel. I&apos;m an Information Technology student who enjoys building applications and learning how the systems behind them work.
+              Hi, I&apos;m Amaya. I&apos;m an Information Technology student at De La Salle Lipa who likes building applications and learning how backend systems work.
             </p>
 
             <p>

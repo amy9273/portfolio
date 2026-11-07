@@ -36,7 +36,7 @@ export function Contact() {
     subject: inquiryType,
     message:
       message ||
-      'Hi Angel, I saw your portfolio and would like to talk about an internship or project...',
+      'Hi Amaya, I saw your portfolio and would like to talk about an internship or project...',
     timestamp,
   };
 
@@ -58,7 +58,7 @@ export function Contact() {
       `[Portfolio] ${inquiryType} from ${senderName || 'Recruiter'}`
     );
     const body = encodeURIComponent(
-      `Hi Angel,\n\n${message || 'I came across your portfolio and wanted to reach out.'}\n\nBest,\n${
+      `Hi Amaya,\n\n${message || 'I came across your portfolio and wanted to reach out.'}\n\nBest,\n${
         senderName || 'Anonymous'
       }\nEmail: ${senderEmail || 'N/A'}`
     );
