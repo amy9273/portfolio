@@ -7,6 +7,8 @@ import {
   Cpu,
   Layers,
   CheckCircle2,
+  Box,
+  Sparkles,
 } from 'lucide-react';
 import { GitHubHeatmap } from '@/components/visuals/GitHubHeatmap';
 import { GITHUB_ACTIVITY } from '@/data/github';
@@ -23,6 +25,68 @@ interface PillarTab {
 }
 
 const PILLARS: PillarTab[] = [
+  {
+    id: '3d-animation',
+    title: '3D Modeling & Animation',
+    category: 'Blender, Three.js & Flutter',
+    icon: Box,
+    headline: 'Custom 3D sign language gestures and mobile WebGL integration',
+    architectureDetails: [
+      'Modeled, rigged, and animated custom Filipino Sign Language gestures in Blender.',
+      'Wrote a custom Blender Python addon to batch sample, optimize keyframes, and export actions to GLB.',
+      'Embedded a WebGL Three.js viewer in Flutter using InAppWebView for smooth 60fps avatar playback.',
+      'Established a two-way JavaScript bridge between Flutter state and WebGL animation triggers.',
+    ],
+    codeSnippet: `# Custom Blender Python Batch glTF Export Addon
+class EXPORT_OT_batch_animations(bpy.types.Operator):
+    bl_idname = "anim.batch_export_gltf"
+    bl_label = "Batch Export Actions to glTF"
+
+    def execute(self, context):
+        armature = get_selected_armature(context)
+        for action in context.scene.selected_animations:
+            armature.animation_data.action = action
+            out_file = os.path.join(self.export_path, f"{action.name}.glb")
+            bpy.ops.export_scene.gltf(
+                filepath=out_file,
+                export_format='GLB',
+                export_animations=True,
+                export_optimize_animation_size=True
+            )
+        return {'FINISHED'}`,
+    takeaway: 'Learned: How 3D skeletal rigging, keyframe optimization, and WebGL bridges work on mobile.',
+  },
+  {
+    id: 'ai-integration',
+    title: 'AI Integration & Schemas',
+    category: 'Gemini Flash, Zod & Node.js',
+    icon: Sparkles,
+    headline: 'Structured LLM outputs with JSON schemas and runtime validation',
+    architectureDetails: [
+      'Integrated Google Gemini Flash (@google/genai) to review pet symptom descriptions and appointment requests.',
+      'Engineered few-shot prompt isolation using <submission> delimiters to prevent prompt injection.',
+      'Configured responseJsonSchema directly in the Gemini call so replies strictly follow JSON.',
+      'Validated incoming model responses at runtime using Zod (safeParse) to guarantee type safety.',
+    ],
+    codeSnippet: `// Gemini Structured Output with Runtime Zod Validation
+export async function reviewProject(description: string): Promise<Review> {
+  const response = await getClient().models.generateContent({
+    model: 'gemini-flash-latest',
+    contents: buildContents(description),
+    config: {
+      systemInstruction: SYSTEM_PROMPT,
+      responseMimeType: 'application/json',
+      responseJsonSchema: reviewJsonSchema,
+    },
+  });
+
+  const raw = JSON.parse(response.text!);
+  const result = reviewSchema.safeParse(raw);
+  if (!result.success) throw new AiReplyError('Invalid schema');
+  return result.data;
+}`,
+    takeaway: 'Learned: How strict JSON schemas and runtime validation prevent unpredictable LLM outputs.',
+  },
   {
     id: 'tenancy',
     title: 'Multi-Tenant Database',
@@ -96,7 +160,7 @@ await escalationQueue.add('escalate-incident', { incidentId, tier: 2 }, {
 ];
 
 export function Systems() {
-  const [activeTab, setActiveTab] = useState<string>(PILLARS[0]?.id ?? 'tenancy');
+  const [activeTab, setActiveTab] = useState<string>(PILLARS[0]?.id ?? '3d-animation');
 
   const currentPillar = PILLARS.find((p) => p.id === activeTab) ?? PILLARS[0]!;
   const IconComponent = currentPillar.icon;
@@ -118,7 +182,7 @@ export function Systems() {
               Concepts I&apos;ve Explored.
             </h2>
             <p className="text-graphite/75 text-sm sm:text-base font-sans mt-2 max-w-2xl leading-relaxed">
-              A closer look at implementation details and patterns I&apos;ve explored through my projects—including database schema isolation, concurrency handling, and delayed queues.
+              A closer look at implementation details and patterns I&apos;ve explored through my projects—including 3D animation pipelines, structured AI integration, database schema isolation, and concurrency handling.
             </p>
           </div>
           <div className="font-mono text-xs text-muted-mauve flex items-center gap-2">
