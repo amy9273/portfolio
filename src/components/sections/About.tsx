@@ -102,6 +102,26 @@ export function About() {
                 </div>
               </div>
             </div>
+
+            {/* Action Buttons under GitHub stats */}
+            <div className="flex flex-col sm:flex-row gap-3 pt-1">
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noreferrer"
+                className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-royal-violet hover:bg-[#5C328E] text-white font-mono text-xs font-semibold tracking-wider transition-all duration-300 shadow-sm active:scale-95 text-center"
+              >
+                <span>DOWNLOAD RÉSUMÉ (PDF)</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </a>
+
+              <Link
+                href="#contact"
+                className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-white hover:bg-mist border border-mist text-graphite font-mono text-xs font-semibold tracking-wider transition-all duration-300 shadow-sm active:scale-95 text-center"
+              >
+                <span>SEND ME A MESSAGE</span>
+              </Link>
+            </div>
           </div>
 
           {/* Right Column: Grounded, Honest Personal Narrative */}
@@ -151,25 +171,6 @@ export function About() {
                   <span className="text-emerald-700 font-semibold">Open to software development opportunities and internships</span>
                 </div>
               </div>
-            </div>
-
-            <div className="flex flex-wrap items-center gap-4 pt-2">
-              <a
-                href="/resume.pdf"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-royal-violet hover:bg-[#5C328E] text-white font-mono text-xs font-semibold tracking-wider transition-all duration-300 shadow-sm"
-              >
-                <span>DOWNLOAD RÉSUMÉ (PDF)</span>
-                <ArrowUpRight className="w-4 h-4" />
-              </a>
-
-              <Link
-                href="#contact"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white hover:bg-mist border border-mist text-graphite font-mono text-xs font-semibold tracking-wider transition-all duration-300 shadow-sm"
-              >
-                <span>SEND ME A MESSAGE</span>
-              </Link>
             </div>
           </div>
         </div>
