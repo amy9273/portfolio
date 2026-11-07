@@ -11,12 +11,12 @@ interface PreloaderProps {
 }
 
 const BOOT_LOGS = [
-  { progress: 0, text: 'KERNEL_INIT: Booting virtual thread execution harness...' },
-  { progress: 24, text: 'SPRING_CORE: Multi-tenant PostgreSQL schemas mounted [OK]' },
-  { progress: 52, text: 'REDIS_BULLMQ: Escalation delay queues initialized [OK]' },
-  { progress: 78, text: 'TELEMETRY: Verified 1,010+ GitHub annual commits synced [OK]' },
-  { progress: 95, text: 'ORBITAL_CORE: NEBULA procedural WebGL pipeline ready [OK]' },
-  { progress: 100, text: 'SYSTEMS_ONLINE: Launching Angel Amaya Balion Portfolio...' },
+  { progress: 0, text: 'Initializing portfolio workspace...' },
+  { progress: 24, text: 'Loading projects and course notes...' },
+  { progress: 52, text: 'Fetching GitHub activity telemetry (@amy9273)...' },
+  { progress: 78, text: 'Preparing 3D orbital canvas and interactive sections...' },
+  { progress: 95, text: 'Almost ready...' },
+  { progress: 100, text: 'Welcome to my portfolio.' },
 ];
 
 export function Preloader({ onComplete, forceShow = false }: PreloaderProps) {
@@ -115,9 +115,9 @@ export function Preloader({ onComplete, forceShow = false }: PreloaderProps) {
           <div className="relative z-10 flex items-center justify-between text-xs font-mono text-muted-mauve">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-pale-lilac font-semibold">KERNEL_INIT</span>
+              <span className="text-pale-lilac font-semibold">ANGEL AMAYA BALION</span>
               <span className="text-royal-violet">//</span>
-              <span className="hidden sm:inline">ANGEL_AMAYA_BALION_SYS_v2.6</span>
+              <span className="hidden sm:inline">BSIT PORTFOLIO</span>
             </div>
 
             <button
@@ -167,20 +167,16 @@ export function Preloader({ onComplete, forceShow = false }: PreloaderProps) {
             </div>
           </div>
 
-          {/* Bottom Bar: Architecture Pillars */}
+          {/* Bottom Bar: Simple student affiliation */}
           <div className="relative z-10 flex flex-wrap items-center justify-between gap-4 text-[11px] font-mono text-muted-mauve border-t border-royal-violet/20 pt-4">
             <div className="flex items-center gap-4">
               <span className="flex items-center gap-1.5">
                 <ShieldCheck className="w-3.5 h-3.5 text-pale-lilac" />
-                JAVA 21 · SPRING BOOT 3
-              </span>
-              <span className="hidden sm:flex items-center gap-1.5">
-                <Zap className="w-3.5 h-3.5 text-electric-lavender" />
-                REDIS · VIRTUAL THREADS
+                JAVA · SPRING BOOT · TYPESCRIPT
               </span>
             </div>
             <div className="text-pale-lilac/70">
-              DE LA SALLE LIPA · BSIT 2027
+              DE LA SALLE LIPA · BS INFORMATION TECHNOLOGY (2027)
             </div>
           </div>
         </motion.div>

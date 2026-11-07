@@ -1,16 +1,15 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import {
   GraduationCap,
-  BookOpen,
-  Code2,
-  Database,
   ArrowUpRight,
   Sparkles,
   Heart,
-  CheckCircle2,
+  MapPin,
+  Calendar,
 } from 'lucide-react';
 
 export function About() {
@@ -25,10 +24,10 @@ export function About() {
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-royal-violet/10 border border-royal-violet/20 text-royal-violet font-mono text-xs font-semibold mb-2">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>02 / EDITORIAL BIOGRAPHY</span>
+              <span>02 / ABOUT ME</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-display font-extrabold text-graphite tracking-tight">
-              Curious by nature. Developer by practice.
+              A bit about me.
             </h2>
           </div>
           <div className="font-mono text-xs text-muted-mauve flex items-center gap-2">
@@ -37,30 +36,117 @@ export function About() {
           </div>
         </div>
 
-        {/* Narrative & Bento Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Main Editorial Narrative */}
+        {/* Narrative & Profile Portrait Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          {/* Left Column: Portrait Card & Academic Summary */}
+          <div className="lg:col-span-5 space-y-6">
+            {/* Real User Photo */}
+            <div className="relative group rounded-3xl overflow-hidden bg-white border border-mist shadow-md p-3">
+              <div className="relative aspect-square w-full rounded-2xl overflow-hidden bg-mist/50">
+                <Image
+                  src="/images/profile.png"
+                  alt="Angel Amaya Balion"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 420px"
+                  className="object-cover object-center group-hover:scale-[1.02] transition-transform duration-500"
+                  priority
+                />
+              </div>
+
+              <div className="pt-4 px-2 pb-2 space-y-2">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="font-display font-bold text-lg text-graphite">
+                      Angel Amaya Balion
+                    </h3>
+                    <p className="text-xs font-mono text-muted-mauve">
+                      BS Information Technology Student
+                    </p>
+                  </div>
+                  <span className="px-2.5 py-1 rounded-full text-[11px] font-mono bg-royal-violet/10 text-royal-violet font-semibold">
+                    4th Year
+                  </span>
+                </div>
+
+                <div className="pt-2 border-t border-mist/80 flex flex-wrap gap-x-4 gap-y-1.5 text-xs font-mono text-muted-mauve">
+                  <span className="flex items-center gap-1">
+                    <MapPin className="w-3.5 h-3.5 text-royal-violet" />
+                    Batangas, Philippines
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <GraduationCap className="w-3.5 h-3.5 text-royal-violet" />
+                    DLSL (2027)
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Quick Numbers Bar */}
+            <div className="grid grid-cols-3 gap-3">
+              <div className="bg-white border border-mist rounded-2xl p-4 text-center shadow-sm">
+                <div className="font-display font-extrabold text-2xl text-royal-violet">1,010</div>
+                <div className="font-mono text-[10px] text-muted-mauve uppercase mt-0.5">
+                  GitHub Commits
+                </div>
+              </div>
+              <div className="bg-white border border-mist rounded-2xl p-4 text-center shadow-sm">
+                <div className="font-display font-extrabold text-2xl text-royal-violet">16</div>
+                <div className="font-mono text-[10px] text-muted-mauve uppercase mt-0.5">
+                  Repositories
+                </div>
+              </div>
+              <div className="bg-white border border-mist rounded-2xl p-4 text-center shadow-sm">
+                <div className="font-display font-extrabold text-2xl text-royal-violet">9</div>
+                <div className="font-mono text-[10px] text-muted-mauve uppercase mt-0.5">
+                  Certificates
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Grounded, Honest Personal Narrative */}
           <div className="lg:col-span-7 space-y-6 text-base md:text-lg leading-relaxed text-graphite/90 font-sans">
             <p className="font-medium text-lg md:text-xl text-graphite">
-              I&apos;m <strong className="text-royal-violet">Angel Amaya Balion</strong>, an Information Technology student at De La Salle Lipa with an appetite for understanding how software components orchestrate behind modern interfaces.
+              Hi, I&apos;m Angel. I&apos;m an Information Technology student who enjoys building applications and learning how the systems behind them work.
             </p>
 
             <p>
-              My engineering approach is driven by the backend layer: database schema isolation, concurrency control, transaction boundaries, and distributed event queues. I believe robust software begins with predictable data guarantees and observable telemetry—whether that involves designing multi-tenant PostgreSQL schemas with Flyway or synchronizing async worker queues with Redis.
+              Most of my programming experience comes from academic projects and building things on my own. I got drawn to backend development because I wanted to understand what happens after a button is clicked—how data gets validated, how databases keep records consistent across multiple users, and how servers handle unexpected traffic spikes.
             </p>
 
             <p>
-              I take pride in building full-stack products where heavy infrastructure is paired with refined, responsive user interfaces. I love writing clean, typed code in <strong className="text-graphite font-semibold">Java (Spring Boot 3)</strong>, <strong className="text-graphite font-semibold">TypeScript (Next.js & Node)</strong>, and <strong className="text-graphite font-semibold">Python</strong>.
+              Lately, I&apos;ve spent most of my coding time working with <strong className="text-graphite font-semibold">Java and Spring Boot</strong>, <strong className="text-graphite font-semibold">PostgreSQL</strong>, and <strong className="text-graphite font-semibold">TypeScript with Node.js and Next.js</strong>. I enjoy projects where I have to think about database structures, multi-tenant separation, and background job queues.
             </p>
 
-            <div className="p-5 rounded-2xl bg-mist/60 border border-mist/80 space-y-3">
+            <div className="p-5 rounded-2xl bg-white border border-mist space-y-2.5 shadow-sm">
               <div className="font-mono text-xs text-royal-violet font-bold uppercase tracking-wider flex items-center gap-2">
                 <Heart className="w-4 h-4 text-electric-lavender fill-electric-lavender/30" />
-                <span>Interests & Creative Ventures</span>
+                <span>Outside of Coding</span>
               </div>
-              <p className="text-sm text-graphite/80 leading-relaxed font-sans">
-                Outside of backend engineering, I am an avid reader of manga and manhwa—an interest that directly inspired me to architect <strong className="text-royal-violet font-semibold">Malaya</strong>, a Next.js 15 PWA webtoon engine. I also experiment with 3D avatars, sign language accessibility algorithms (<strong className="text-royal-violet font-semibold">Kamunica</strong>), and interactive WebGL experiences.
+              <p className="text-sm text-graphite/85 leading-relaxed font-sans">
+                When I&apos;m not studying or coding, I enjoy reading manga and manhwa, watching shows, and building fun side projects. That&apos;s actually how I ended up making <strong className="text-royal-violet font-semibold">Malaya</strong> (a simple webtoon reader PWA) and working on <strong className="text-royal-violet font-semibold">Kamunica</strong> (our capstone sign language learning app with 3D avatars).
               </p>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-white border border-mist space-y-3 shadow-sm">
+              <div className="font-mono text-xs text-royal-violet font-bold uppercase tracking-wider flex items-center gap-2">
+                <GraduationCap className="w-4 h-4 text-royal-violet" />
+                <span>Education: De La Salle Lipa</span>
+              </div>
+              <div className="text-xs font-mono space-y-1.5 text-graphite/85">
+                <div>
+                  <span className="text-muted-mauve">Degree: </span>
+                  <span className="font-semibold text-graphite">BS in Information Technology (Expected 2027)</span>
+                </div>
+                <div>
+                  <span className="text-muted-mauve">Relevant Coursework: </span>
+                  <span>Database Systems, Software Architecture, Distributed Computing, Web & Mobile Development</span>
+                </div>
+                <div>
+                  <span className="text-muted-mauve">Status: </span>
+                  <span className="text-emerald-700 font-semibold">Looking for 2025/2026 software / backend internships</span>
+                </div>
+              </div>
             </div>
 
             <div className="flex flex-wrap items-center gap-4 pt-2">
@@ -68,7 +154,7 @@ export function About() {
                 href="/resume.pdf"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-royal-violet hover:bg-[#5C328E] text-white font-mono text-xs font-semibold tracking-wider transition-all duration-300 shadow-md shadow-royal-violet/20"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-royal-violet hover:bg-[#5C328E] text-white font-mono text-xs font-semibold tracking-wider transition-all duration-300 shadow-sm"
               >
                 <span>DOWNLOAD RÉSUMÉ (PDF)</span>
                 <ArrowUpRight className="w-4 h-4" />
@@ -78,89 +164,9 @@ export function About() {
                 href="#contact"
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white hover:bg-mist border border-mist text-graphite font-mono text-xs font-semibold tracking-wider transition-all duration-300 shadow-sm"
               >
-                <span>OPEN CONTACT TERMINAL</span>
+                <span>SEND ME A MESSAGE</span>
               </Link>
             </div>
-          </div>
-
-          {/* Right Column: Bento Cards */}
-          <div className="lg:col-span-5 space-y-5">
-            {/* Academic Card */}
-            <div className="bg-white border border-mist rounded-2xl p-6 shadow-sm space-y-4">
-              <div className="flex items-center justify-between pb-3 border-b border-mist">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-9 h-9 rounded-xl bg-royal-violet/10 flex items-center justify-center text-royal-violet">
-                    <GraduationCap className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-display font-bold text-sm text-graphite">
-                      De La Salle Lipa
-                    </h3>
-                    <p className="text-[11px] font-mono text-muted-mauve">
-                      Lipa City, Batangas, Philippines
-                    </p>
-                  </div>
-                </div>
-                <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
-                  Senior
-                </span>
-              </div>
-
-              <div className="space-y-2 text-xs font-mono">
-                <div>
-                  <span className="text-muted-mauve block text-[10px] uppercase">Degree Program</span>
-                  <span className="text-graphite font-bold">BS in Information Technology</span>
-                </div>
-                <div>
-                  <span className="text-muted-mauve block text-[10px] uppercase">Expected Completion</span>
-                  <span className="text-graphite">2027</span>
-                </div>
-                <div>
-                  <span className="text-muted-mauve block text-[10px] uppercase">Core Competencies</span>
-                  <span className="text-graphite">Software Architecture, Database Systems, Network Principles</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Core Engineering Principles */}
-            <div className="bg-white border border-mist rounded-2xl p-6 shadow-sm space-y-3.5">
-              <div className="font-mono text-xs font-bold text-royal-violet uppercase tracking-wider flex items-center gap-2">
-                <Code2 className="w-4 h-4" />
-                <span>Engineering Philosophy</span>
-              </div>
-
-              <ul className="space-y-2.5 text-xs text-graphite/90">
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span><strong>Data Integrity First:</strong> Strict ACID boundaries, schema validations, and zero-drift database migrations.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span><strong>Concurrency Resilient:</strong> Virtual Threads, lock-free CAS token buckets, and isolated Redis worker state machines.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span><strong>Verifiable Proof:</strong> 1,010+ annual commits and 100% automated test coverage over unsubstantiated claims.</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Verified Quick Stats Bar */}
-            <div className="grid grid-cols-3 gap-3">
-              <div className="bg-white border border-mist rounded-xl p-3.5 text-center shadow-sm">
-                <div className="font-display font-extrabold text-2xl text-royal-violet">1,010+</div>
-                <div className="font-mono text-[10px] text-muted-mauve uppercase mt-0.5">Commits/Yr</div>
-              </div>
-              <div className="bg-white border border-mist rounded-xl p-3.5 text-center shadow-sm">
-                <div className="font-display font-extrabold text-2xl text-royal-violet">16</div>
-                <div className="font-mono text-[10px] text-muted-mauve uppercase mt-0.5">Git Repos</div>
-              </div>
-              <div className="bg-white border border-mist rounded-xl p-3.5 text-center shadow-sm">
-                <div className="font-display font-extrabold text-2xl text-royal-violet">9</div>
-                <div className="font-mono text-[10px] text-muted-mauve uppercase mt-0.5">Certificates</div>
-              </div>
-            </div>
-
           </div>
         </div>
       </div>

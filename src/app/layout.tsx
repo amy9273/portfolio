@@ -22,19 +22,17 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Angel Amaya Balion — Software Developer · Backend Engineering',
+  title: 'Angel Amaya Balion — Student Software Developer',
   description:
-    'Personal portfolio and digital identity of Angel Amaya Balion (A/B · NEBULA). Specializing in Java Spring Boot, TypeScript, PostgreSQL, and distributed architectures.',
+    'Personal portfolio of Angel Amaya Balion, a 4th-year Information Technology student at De La Salle Lipa. Exploring backend development, Java, Spring Boot, TypeScript, and database systems.',
   keywords: [
     'Angel Amaya Balion',
-    'A/B Portfolio',
     'Software Developer',
-    'Backend Engineer',
+    'De La Salle Lipa',
     'Java Spring Boot',
     'PostgreSQL',
     'TypeScript',
-    'Redis',
-    'De La Salle Lipa',
+    'Backend Development',
   ],
   authors: [{ name: 'Angel Amaya Balion', url: 'https://github.com/amy9273' }],
   creator: 'Angel Amaya Balion',
@@ -42,16 +40,16 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://github.com/amy9273/portfolio',
-    title: 'Angel Amaya Balion — Software Developer · Backend Engineering',
+    title: 'Angel Amaya Balion — Student Software Developer',
     description:
-      'Personal portfolio and digital identity of Angel Amaya Balion (A/B · NEBULA). Exploring ideas. Building systems.',
-    siteName: 'A/B Portfolio',
+      'Personal portfolio of Angel Amaya Balion, a 4th-year IT student at De La Salle Lipa interested in backend development, databases, and application systems.',
+    siteName: 'Angel Amaya Balion Portfolio',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Angel Amaya Balion — Software Developer',
+    title: 'Angel Amaya Balion — Student Software Developer',
     description:
-      'Personal portfolio of Angel Amaya Balion. Building with curiosity. Engineering with purpose.',
+      'Personal portfolio of Angel Amaya Balion, a 4th-year IT student at De La Salle Lipa interested in backend development, databases, and application systems.',
   },
 };
 

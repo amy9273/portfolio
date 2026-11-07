@@ -6,13 +6,12 @@ import {
   Award,
   ArrowUpRight,
   ShieldCheck,
-  Calendar,
   Building2,
   CheckCircle2,
 } from 'lucide-react';
 import { CERTIFICATES_DATA, CertificateItem } from '@/data/certificates';
 
-type CertCategory = 'ALL' | 'DATABASES' | 'NETWORKING' | 'PYTHON' | 'CS';
+type CertCategory = 'ALL' | 'Databases & SQL' | 'Networking' | 'Python & Data' | 'Computer Science';
 
 interface TimelineEvent {
   year: string;
@@ -30,24 +29,24 @@ const TIMELINE_EVENTS: TimelineEvent[] = [
     institution: 'De La Salle Lipa (DLSL)',
     location: 'Lipa City, Batangas, Philippines',
     description:
-      'Pursuing an IT degree with specialized focus on software architecture, database management, and distributed systems. Leading backend development for capstone and collaborative systems projects.',
+      'Currently in my fourth year studying Information Technology. My coursework and personal focus center on database management, backend programming, and software systems.',
     highlights: [
-      'Advanced Database Management Systems (PostgreSQL, ACID transactions)',
-      'Systems Analysis & Software Engineering Architecture',
-      'Data Structures, Algorithms, and Object-Oriented Concurrency',
-      'Capstone Project Lead: Kamunica (Filipino Sign Language 3D Platform)',
+      'Database Management Systems (PostgreSQL, schema design, transactions)',
+      'Systems Analysis, Software Design, and Object-Oriented Programming',
+      'Distributed Systems and Web & Mobile Application Development',
+      'Capstone Project: Kamunica (Filipino Sign Language app with 3D avatar)',
     ],
   },
   {
     year: '2021 — 2023',
-    role: 'Information & Communications Technology Immersion',
+    role: 'Senior High School (STEM / ICT Track)',
     institution: 'University of Cabuyao (PNC)',
     location: 'Cabuyao, Laguna, Philippines',
     description:
-      'Foundational programming training covering algorithms, object-oriented concepts, web fundamentals, and systems logic.',
+      'Completed senior high school with an emphasis on computer fundamentals, algorithms, and introductory web programming.',
     highlights: [
-      'Graduated with academic honors in STEM/ICT track',
-      'Hands-on technical immersion in systems logic and algorithm design',
+      'Graduated with academic honors in the STEM / ICT strand',
+      'Hands-on exposure to programming fundamentals and algorithmic problem solving',
     ],
   },
 ];
@@ -57,12 +56,32 @@ export function Experience() {
 
   const filteredCerts = CERTIFICATES_DATA.filter((cert) => {
     if (activeFilter === 'ALL') return true;
-    if (activeFilter === 'DATABASES') return cert.issuerCategory === 'Databases & SQL';
-    if (activeFilter === 'NETWORKING') return cert.issuerCategory === 'Networking';
-    if (activeFilter === 'PYTHON') return cert.issuerCategory === 'Python & Data';
-    if (activeFilter === 'CS') return cert.issuerCategory === 'Computer Science';
-    return true;
+    return cert.issuerCategory === activeFilter;
   });
+
+  const filterOptions: { label: string; key: CertCategory; count: number }[] = [
+    { label: 'All', key: 'ALL', count: CERTIFICATES_DATA.length },
+    {
+      label: 'Databases & SQL',
+      key: 'Databases & SQL',
+      count: CERTIFICATES_DATA.filter((c) => c.issuerCategory === 'Databases & SQL').length,
+    },
+    {
+      label: 'Python & Data',
+      key: 'Python & Data',
+      count: CERTIFICATES_DATA.filter((c) => c.issuerCategory === 'Python & Data').length,
+    },
+    {
+      label: 'Networking',
+      key: 'Networking',
+      count: CERTIFICATES_DATA.filter((c) => c.issuerCategory === 'Networking').length,
+    },
+    {
+      label: 'Computer Science',
+      key: 'Computer Science',
+      count: CERTIFICATES_DATA.filter((c) => c.issuerCategory === 'Computer Science').length,
+    },
+  ];
 
   return (
     <section
@@ -71,17 +90,17 @@ export function Experience() {
     >
       <div className="max-w-7xl mx-auto space-y-16">
         {/* ========================================================== */}
-        {/* PART 1: CHRONOLOGICAL EDUCATION & IMMERSION TIMELINE       */}
+        {/* PART 1: CHRONOLOGICAL EDUCATION TIMELINE                   */}
         {/* ========================================================== */}
         <div className="space-y-10">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-royal-violet/30 pb-6">
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-royal-violet/20 border border-royal-violet/40 text-electric-lavender font-mono text-xs font-semibold mb-2">
                 <GraduationCap className="w-3.5 h-3.5" />
-                <span>05 / ACADEMIC FOUNDATION & TIMELINE</span>
+                <span>05 / EDUCATION</span>
               </div>
               <h2 className="text-3xl md:text-5xl font-display font-extrabold text-white tracking-tight">
-                Education & Technical Milestones.
+                Education & Background.
               </h2>
             </div>
             <span className="font-mono text-xs text-muted-mauve">
@@ -92,10 +111,10 @@ export function Experience() {
           <div className="relative border-l-2 border-royal-violet/40 ml-4 md:ml-6 space-y-10 py-2">
             {TIMELINE_EVENTS.map((event, idx) => (
               <div key={idx} className="relative pl-8 md:pl-10 group">
-                {/* Timeline Node Point */}
+                {/* Node Dot */}
                 <div className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-[#1F162D] border-2 border-electric-lavender group-hover:scale-125 transition-transform" />
 
-                <div className="bg-void/70 border border-royal-violet/30 rounded-2xl p-6 sm:p-7 hover:border-electric-lavender transition-all">
+                <div className="bg-void/70 border border-royal-violet/30 rounded-2xl p-6 sm:p-7 hover:border-electric-lavender/60 transition-all">
                   <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                     <span className="font-mono text-xs text-electric-lavender font-bold">
                       {event.year}
@@ -132,46 +151,54 @@ export function Experience() {
         </div>
 
         {/* ========================================================== */}
-        {/* PART 2: 9 INDIVIDUAL VERIFIED CREDENTIALS                   */}
+        {/* PART 2: 9 COURSE CERTIFICATES                               */}
         {/* ========================================================== */}
-        <div id="certifications" className="space-y-10 pt-8 border-t border-royal-violet/30 scroll-mt-24">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-royal-violet/30 pb-6">
-            <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-royal-violet/20 border border-royal-violet/40 text-electric-lavender font-mono text-xs font-semibold mb-2">
-                <Award className="w-3.5 h-3.5" />
-                <span>VERIFIED CREDENTIALS</span>
+        <div id="certifications" className="space-y-8 pt-8 border-t border-royal-violet/30 scroll-mt-24">
+          <div className="space-y-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-royal-violet/20 border border-royal-violet/40 text-electric-lavender font-mono text-xs font-semibold">
+              <Award className="w-3.5 h-3.5" />
+              <span>CERTIFICATES</span>
+            </div>
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+              <div>
+                <h3 className="text-2xl md:text-4xl font-display font-extrabold text-white tracking-tight">
+                  Course Certificates.
+                </h3>
+                <p className="text-cloud/70 text-xs sm:text-sm font-sans mt-1">
+                  Certificates completed through Cisco Networking Academy, DataCamp, and Coursera.
+                </p>
               </div>
-              <h3 className="text-2xl md:text-4xl font-display font-extrabold text-white tracking-tight">
-                9 Individual Verified Certifications.
-              </h3>
-              <p className="text-cloud/70 text-xs sm:text-sm font-sans mt-1">
-                Issued by Cisco Networking Academy, DataCamp, and Coursera / University of Michigan.
-              </p>
             </div>
 
-            {/* Filter Pills */}
-            <div className="flex flex-wrap gap-2 text-xs font-mono">
-              {(
-                [
-                  { label: 'ALL (9)', key: 'ALL' },
-                  { label: 'DATABASES & SQL (3)', key: 'DATABASES' },
-                  { label: 'NETWORKING (1)', key: 'NETWORKING' },
-                  { label: 'PYTHON & DATA (4)', key: 'PYTHON' },
-                  { label: 'CS (1)', key: 'CS' },
-                ] as const
-              ).map((f) => (
-                <button
-                  key={f.key}
-                  onClick={() => setActiveFilter(f.key)}
-                  className={`px-3 py-1.5 rounded-lg border transition-all ${
-                    activeFilter === f.key
-                      ? 'bg-royal-violet border-electric-lavender text-white shadow-[0_0_12px_rgba(167,123,235,0.4)]'
-                      : 'bg-void/70 border-royal-violet/30 text-muted-mauve hover:text-pale-lilac hover:border-royal-violet/60'
-                  }`}
-                >
-                  {f.label}
-                </button>
-              ))}
+            {/* Clean Horizontal Filter Bar (No clumsy wrapping) */}
+            <div className="pt-2">
+              <div className="flex items-center gap-1.5 p-1 rounded-xl bg-void/60 border border-royal-violet/25 w-full sm:w-fit overflow-x-auto no-scrollbar">
+                {filterOptions.map((f) => {
+                  const isActive = activeFilter === f.key;
+                  return (
+                    <button
+                      key={f.key}
+                      onClick={() => setActiveFilter(f.key)}
+                      className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-mono font-medium whitespace-nowrap transition-all duration-200 ${
+                        isActive
+                          ? 'bg-royal-violet text-white shadow-sm'
+                          : 'text-muted-mauve hover:text-pale-lilac hover:bg-royal-violet/10'
+                      }`}
+                    >
+                      <span>{f.label}</span>
+                      <span
+                        className={`text-[10px] px-1.5 py-0.2 rounded-full ${
+                          isActive
+                            ? 'bg-white/20 text-white'
+                            : 'bg-aubergine text-muted-mauve'
+                        }`}
+                      >
+                        {f.count}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </div>
 
@@ -180,7 +207,7 @@ export function Experience() {
             {filteredCerts.map((cert) => (
               <div
                 key={cert.id}
-                className="p-6 rounded-2xl bg-void/80 border border-royal-violet/30 hover:border-electric-lavender/80 transition-all flex flex-col justify-between group shadow-lg"
+                className="p-6 rounded-2xl bg-void/80 border border-royal-violet/30 hover:border-electric-lavender/60 transition-all flex flex-col justify-between group shadow-lg"
               >
                 <div>
                   <div className="flex items-center justify-between text-[11px] font-mono text-muted-mauve mb-2">
@@ -215,7 +242,7 @@ export function Experience() {
                 <div className="pt-3 border-t border-royal-violet/20 flex items-center justify-between text-xs font-mono">
                   <span className="text-[11px] text-muted-mauve flex items-center gap-1">
                     <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                    <span>{cert.verificationBadge}</span>
+                    <span>{cert.issuerCategory}</span>
                   </span>
 
                   <a

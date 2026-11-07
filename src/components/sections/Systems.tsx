@@ -4,13 +4,8 @@ import React, { useState } from 'react';
 import {
   Server,
   Database,
-  ShieldCheck,
   Cpu,
   Layers,
-  ArrowRight,
-  GitBranch,
-  Activity,
-  Zap,
   CheckCircle2,
 } from 'lucide-react';
 import { GitHubHeatmap } from '@/components/visuals/GitHubHeatmap';
@@ -24,21 +19,21 @@ interface PillarTab {
   headline: string;
   architectureDetails: string[];
   codeSnippet: string;
-  metrics: string;
+  takeaway: string;
 }
 
 const PILLARS: PillarTab[] = [
   {
     id: 'tenancy',
-    title: 'Tenant Isolation',
+    title: 'Multi-Tenant Database',
     category: 'PostgreSQL & Spring Boot',
     icon: Database,
-    headline: 'Strict Schema-per-Tenant Isolation with Zero-Drift Migrations',
+    headline: 'Separating organization data using PostgreSQL schemas',
     architectureDetails: [
-      'Hibernate MultiTenantConnectionProvider intercepts requests via tenant header and sets search_path dynamically.',
-      'Row-level PESSIMISTIC_WRITE locking on invoices during subscription renewals to eliminate double charges.',
-      'Automated Flyway migrations migrate shared core schemas and dynamically execute DDL updates across tenant schemas.',
-      'Testcontainers automated test harness verifies isolated tenant boundaries against actual PostgreSQL containers.',
+      'Configured Hibernate MultiTenantConnectionProvider to dynamically set the search_path based on tenant identity.',
+      'Applied row-level pessimistic locking (PESSIMISTIC_WRITE) on invoice records to prevent race conditions during renewals.',
+      'Structured Flyway migration scripts to handle both public shared tables and isolated tenant schemas.',
+      'Verified schema separation using JUnit and Testcontainers against real PostgreSQL instances.',
     ],
     codeSnippet: `// Dynamic Tenant Schema Connection Routing
 @Component
@@ -50,19 +45,19 @@ public class TenantConnectionProvider implements MultiTenantConnectionProvider {
     return connection;
   }
 }`,
-    metrics: 'Zero cross-tenant leakage · ACID guarantees',
+    takeaway: 'Learned: How database schema isolation protects customer data privacy.',
   },
   {
     id: 'concurrency',
-    title: 'Concurrency & Concurrency Control',
-    category: 'Java 21 Loom & Atomic CAS',
+    title: 'Concurrency & Rate Limiting',
+    category: 'Java 21 & Project Loom',
     icon: Cpu,
-    headline: 'Lock-Free Token Bucket Concurrency with Project Loom Virtual Threads',
+    headline: 'Exploring lightweight concurrent request handling with Virtual Threads',
     architectureDetails: [
-      'Project Loom Virtual Threads dispatch thousands of concurrent requests with lightweight stack allocations (~few KB).',
-      'AtomicLong and CAS (Compare-And-Swap) loop enforces token bucket rate limiting with zero kernel lock contention.',
-      'Sliding Window Log algorithm acts as a deterministic fallback during spike traffic bursts.',
-      'Full RFC 6585 compliance with standard RateLimit-Limit, RateLimit-Remaining, and Retry-After HTTP response headers.',
+      'Used Java 21 Virtual Threads to handle multiple concurrent tasks without heavy OS thread overhead.',
+      'Implemented a token bucket algorithm using AtomicLong to track request allowances without mutex locks.',
+      'Added a sliding window log approach as a fallback to handle sudden traffic spikes.',
+      'Returned standard HTTP 429 response headers including RateLimit-Limit and Retry-After.',
     ],
     codeSnippet: `// Lock-Free Atomic CAS Token Bucket Refill
 public boolean tryConsume(int tokens) {
@@ -71,23 +66,23 @@ public boolean tryConsume(int tokens) {
     long updated = Math.min(capacity, current + calculateRefill());
     if (updated < tokens) return false;
     if (availableTokens.compareAndSet(current, updated - tokens)) {
-      return true; // Token acquired with zero mutex lock
+      return true; // Token acquired safely
     }
   }
 }`,
-    metrics: '< 3ms p99 overhead · 25,000+ RPS tested',
+    takeaway: 'Learned: How atomic operations and virtual threads make concurrency manageable.',
   },
   {
     id: 'queues',
     title: 'Queues & State Machines',
     category: 'Redis BullMQ & WebSockets',
     icon: Server,
-    headline: 'Asynchronous Alert Escalation Engine with BullMQ Delay Queues',
+    headline: 'Managing incident alerts and delayed escalation timers',
     architectureDetails: [
-      'Redis BullMQ delay queues implement multi-tier on-call escalation timeouts (Tier 1 -> Tier 2 -> Lead).',
-      'Dead Letter Queue (DLQ) automatic retry and poison message isolation guarantees zero dropped emergency alerts.',
-      'Bi-directional WebSocket protocol broadcasts live acknowledged incident states to web and Flutter mobile responders.',
-      'Automated state transition validation ensures idempotent incident progression (TRIGGERED -> ACKNOWLEDGED -> RESOLVED).',
+      'Used Redis BullMQ delayed jobs to implement timed alert escalation if an incident goes unacknowledged.',
+      'Configured dead-letter queue handling so failed alerts can be inspected and retried without data loss.',
+      'Broadcast real-time incident state changes to web and mobile clients using WebSockets.',
+      'Kept incident state transitions predictable (Triggered → Acknowledged → Resolved).',
     ],
     codeSnippet: `// Escalation State Machine Delayed Job
 await escalationQueue.add('escalate-incident', { incidentId, tier: 2 }, {
@@ -96,7 +91,7 @@ await escalationQueue.add('escalate-incident', { incidentId, tier: 2 }, {
   removeOnComplete: true,
   attempts: 3
 });`,
-    metrics: '0 alert drops · 100% resilient failover',
+    takeaway: 'Learned: How async delayed queues prevent dropped notifications in distributed apps.',
   },
 ];
 
@@ -117,20 +112,23 @@ export function Systems() {
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-royal-violet/10 border border-royal-violet/20 text-royal-violet font-mono text-xs font-semibold mb-2">
               <Layers className="w-3.5 h-3.5" />
-              <span>04 / BEHIND THE SYSTEMS</span>
+              <span>04 / BEHIND THE CODE</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-display font-extrabold text-graphite tracking-tight">
-              Architectural Decisions Over Buzzwords.
+              Backend Topics I&apos;ve Explored.
             </h2>
+            <p className="text-graphite/75 text-sm sm:text-base font-sans mt-2 max-w-2xl leading-relaxed">
+              A closer look at how I approached database multi-tenancy, concurrency, and delayed queues in my projects.
+            </p>
           </div>
           <div className="font-mono text-xs text-muted-mauve flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span>PRODUCTION ACID & CONCURRENCY GUARANTEES</span>
+            <span className="w-2 h-2 rounded-full bg-emerald-500" />
+            <span>ACADEMIC & PERSONAL PROJECTS</span>
           </div>
         </div>
 
         {/* Pillar Tabs Navigation */}
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap gap-2.5">
           {PILLARS.map((pillar) => {
             const TabIcon = pillar.icon;
             const isActive = activeTab === pillar.id;
@@ -138,9 +136,9 @@ export function Systems() {
               <button
                 key={pillar.id}
                 onClick={() => setActiveTab(pillar.id)}
-                className={`flex items-center gap-2.5 px-4 sm:px-5 py-3 rounded-xl font-mono text-xs font-semibold transition-all ${
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-mono text-xs font-medium transition-all ${
                   isActive
-                    ? 'bg-royal-violet text-white shadow-md shadow-royal-violet/20 scale-[1.02]'
+                    ? 'bg-royal-violet text-white shadow-sm'
                     : 'bg-white/80 hover:bg-white text-graphite border border-graphite/10 hover:border-royal-violet/30'
                 }`}
               >
@@ -151,7 +149,7 @@ export function Systems() {
           })}
         </div>
 
-        {/* Active Pillar Deep-Dive Display Card */}
+        {/* Active Pillar Card */}
         <div className="bg-white border border-graphite/10 rounded-3xl p-7 sm:p-9 shadow-sm space-y-8">
           {/* Header of Active Pillar */}
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-graphite/10">
@@ -160,7 +158,7 @@ export function Systems() {
                 <IconComponent className="w-6 h-6" />
               </div>
               <div>
-                <span className="font-mono text-xs text-royal-violet font-bold uppercase tracking-wider block">
+                <span className="font-mono text-xs text-royal-violet font-semibold uppercase tracking-wider block">
                   {currentPillar.category}
                 </span>
                 <h3 className="text-xl sm:text-2xl font-display font-bold text-graphite mt-0.5">
@@ -169,8 +167,8 @@ export function Systems() {
               </div>
             </div>
 
-            <div className="px-3.5 py-1.5 rounded-lg bg-mist/60 border border-mist font-mono text-xs text-graphite font-semibold shrink-0">
-              {currentPillar.metrics}
+            <div className="px-3.5 py-1.5 rounded-lg bg-mist/60 border border-mist font-mono text-xs text-graphite font-medium shrink-0">
+              {currentPillar.takeaway}
             </div>
           </div>
 
@@ -179,7 +177,7 @@ export function Systems() {
             {/* Left Highlights */}
             <div className="lg:col-span-6 space-y-4">
               <h4 className="font-mono text-xs font-bold text-royal-violet uppercase tracking-wider">
-                Engineering Blueprint & Guarantees
+                What I Implemented
               </h4>
               <ul className="space-y-3 font-sans text-sm text-graphite/85">
                 {currentPillar.architectureDetails.map((detail, idx) => (
@@ -198,9 +196,9 @@ export function Systems() {
                   <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
                   <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
                   <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
-                  <span className="text-pale-lilac ml-2">{currentPillar.title}.ts/.java</span>
+                  <span className="text-pale-lilac ml-2">{currentPillar.title} snippet</span>
                 </div>
-                <span className="text-[10px] text-electric-lavender">PRODUCTION SNIPPET</span>
+                <span className="text-[10px] text-electric-lavender">Code Example</span>
               </div>
               <pre className="text-pale-lilac/95 leading-relaxed overflow-x-auto text-[11px]">
                 <code>{currentPillar.codeSnippet}</code>
@@ -213,28 +211,28 @@ export function Systems() {
         <div className="space-y-4 pt-4">
           <div className="flex items-center justify-between border-b border-graphite/10 pb-4">
             <div>
-              <span className="font-mono text-xs text-royal-violet font-bold uppercase tracking-wider block">
-                Proof of Work Telemetry
+              <span className="font-mono text-xs text-royal-violet font-semibold uppercase tracking-wider block">
+                Daily Coding Activity
               </span>
               <h3 className="text-2xl font-display font-extrabold text-graphite">
-                Daily Engineering Cadence & Activity
+                GitHub Activity (@amy9273)
               </h3>
             </div>
             <div className="hidden sm:flex items-center gap-3 text-xs font-mono text-muted-mauve">
-              <span>{GITHUB_ACTIVITY.totalContributionsLastYear} Contributions (Last Year)</span>
+              <span>{GITHUB_ACTIVITY.totalContributionsLastYear} Contributions in the Past Year</span>
               <span>•</span>
-              <span>{GITHUB_ACTIVITY.publicReposCount} Public Repos</span>
+              <span>{GITHUB_ACTIVITY.publicReposCount} Public Repositories</span>
             </div>
           </div>
 
           {/* GitHub Heatmap Component */}
           <GitHubHeatmap theme="violet" />
 
-          {/* Language Telemetry Bar */}
+          {/* Language Breakdown Bar */}
           <div className="bg-white border border-graphite/10 rounded-2xl p-5 shadow-sm space-y-3 font-mono text-xs">
             <div className="flex items-center justify-between text-muted-mauve text-[11px]">
-              <span className="font-bold text-graphite">VERIFIED LANGUAGE DISTRIBUTION</span>
-              <span>100% CODEBASE SCAN</span>
+              <span className="font-semibold text-graphite">LANGUAGES ACROSS PROJECTS</span>
+              <span>GitHub Repositories Scan</span>
             </div>
 
             {/* Visual Multi-Color Bar */}

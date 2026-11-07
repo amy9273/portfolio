@@ -1,8 +1,16 @@
 import React from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, ArrowUpRight, ExternalLink, ShieldCheck, CheckCircle2, Code2, Server, Terminal } from 'lucide-react';
-import { FEATURED_PROJECTS, SECONDARY_PROJECTS, ProjectItem } from '@/data/projects';
+import {
+  ArrowLeft,
+  ArrowUpRight,
+  ExternalLink,
+  ShieldCheck,
+  CheckCircle2,
+  Code2,
+  Server,
+} from 'lucide-react';
+import { FEATURED_PROJECTS, SECONDARY_PROJECTS } from '@/data/projects';
 import { Metadata } from 'next';
 
 const ALL_PROJECTS = [...FEATURED_PROJECTS, ...SECONDARY_PROJECTS];
@@ -28,7 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${project.title} — Case Study | Angel Amaya Balion`,
+    title: `${project.title} — Angel Amaya Balion`,
     description: project.description,
   };
 }
@@ -51,7 +59,7 @@ export default async function ProjectDetailPage({ params }: Props) {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-aubergine/70 border border-royal-violet/30 hover:border-electric-lavender text-pale-lilac hover:text-white font-mono text-xs transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
-            <span>BACK TO SELECTED WORK</span>
+            <span>BACK TO PROJECTS</span>
           </Link>
         </div>
 
@@ -59,7 +67,7 @@ export default async function ProjectDetailPage({ params }: Props) {
         <div className="space-y-4 border-b border-royal-violet/30 pb-8">
           <div className="flex flex-wrap items-center gap-2.5">
             <span className="px-3 py-1 rounded-full bg-royal-violet/20 border border-royal-violet/40 text-electric-lavender font-mono text-xs font-semibold">
-              CASE STUDY // {project.id}
+              PROJECT // {project.id}
             </span>
             <span className="px-3 py-1 rounded-full bg-aubergine border border-royal-violet/30 text-pale-lilac font-mono text-xs">
               {project.statusBadge}
@@ -79,9 +87,9 @@ export default async function ProjectDetailPage({ params }: Props) {
               href={project.githubUrl}
               target="_blank"
               rel="noreferrer"
-              className="px-5 py-3 rounded-xl bg-royal-violet hover:bg-electric-lavender text-white font-mono text-xs font-semibold tracking-wider transition-all duration-300 shadow-lg shadow-royal-violet/30 flex items-center gap-2"
+              className="px-5 py-3 rounded-xl bg-royal-violet hover:bg-electric-lavender text-white font-mono text-xs font-semibold tracking-wider transition-all duration-300 shadow-md flex items-center gap-2"
             >
-              <span>INSPECT ON GITHUB</span>
+              <span>VIEW REPOSITORY ON GITHUB</span>
               <ArrowUpRight className="w-4 h-4" />
             </a>
 
@@ -99,23 +107,23 @@ export default async function ProjectDetailPage({ params }: Props) {
           </div>
         </div>
 
-        {/* Main Case Study Overview */}
+        {/* Main Project Overview */}
         <div className="space-y-8 font-sans">
-          <div className="space-y-4">
+          <div className="space-y-3">
             <h2 className="text-2xl font-display font-bold text-white flex items-center gap-2">
               <Server className="w-5 h-5 text-electric-lavender" />
-              <span>System Purpose & Technical Overview</span>
+              <span>What I Built & Why</span>
             </h2>
             <p className="text-cloud/85 text-base sm:text-lg leading-relaxed">
               {project.description}
             </p>
           </div>
 
-          {/* Architecture Highlights Card */}
+          {/* Technical Highlights Card */}
           <div className="p-7 rounded-3xl bg-aubergine/60 border border-royal-violet/35 space-y-4">
             <h3 className="font-mono text-xs font-bold text-electric-lavender uppercase tracking-wider flex items-center gap-2">
               <Code2 className="w-4 h-4" />
-              <span>Core Architectural Guarantees</span>
+              <span>Key Technical Decisions</span>
             </h3>
             <ul className="space-y-3 font-sans text-sm text-cloud/85">
               {project.architectureHighlights.map((highlight, idx) => (
@@ -128,9 +136,9 @@ export default async function ProjectDetailPage({ params }: Props) {
           </div>
 
           {/* Technologies Breakdown */}
-          <div className="space-y-4">
+          <div className="space-y-3">
             <h3 className="font-mono text-xs font-bold text-pale-lilac uppercase tracking-wider">
-              Technology Stack & Dependencies
+              Technologies Used
             </h3>
             <div className="flex flex-wrap gap-2">
               {project.technologies.map((t) => (
@@ -144,25 +152,25 @@ export default async function ProjectDetailPage({ params }: Props) {
             </div>
           </div>
 
-          {/* Verified Telemetry & Quality Bar */}
-          <div className="p-6 rounded-2xl bg-void/80 border border-royal-violet/30 flex flex-wrap items-center justify-between gap-4 font-mono text-xs">
+          {/* Bottom Summary Bar */}
+          <div className="p-5 rounded-2xl bg-void/80 border border-royal-violet/30 flex flex-wrap items-center justify-between gap-4 font-mono text-xs">
             <div className="flex items-center gap-2 text-muted-mauve">
               <ShieldCheck className="w-4 h-4 text-emerald-400" />
-              <span className="text-white font-semibold">{project.proofOfWork}</span>
+              <span className="text-white font-medium">{project.proofOfWork}</span>
             </div>
             <div className="text-pale-lilac/70">
-              ANGEL AMAYA BALION · VERIFIED SYSTEM
+              Angel Amaya Balion • DLSL
             </div>
           </div>
         </div>
 
-        {/* Footer CTA */}
+        {/* Footer Link */}
         <div className="pt-10 border-t border-royal-violet/20 flex items-center justify-between font-mono text-xs text-muted-mauve">
           <Link href="/#work" className="hover:text-white transition-colors flex items-center gap-1.5">
             <ArrowLeft className="w-3.5 h-3.5" />
-            <span>Return to Portfolio</span>
+            <span>Return to All Projects</span>
           </Link>
-          <span>A/B · NEBULA</span>
+          <span>Angel Amaya Balion</span>
         </div>
       </div>
     </div>
