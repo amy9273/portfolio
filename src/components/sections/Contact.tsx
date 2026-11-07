@@ -83,9 +83,9 @@ export function Contact() {
           </h2>
 
           <p className="text-cloud/80 text-sm sm:text-base font-sans leading-relaxed">
-            I&apos;m looking for software development or backend internships for 2025/2026. If
-            you have an opening, a question about any of my projects, or just want to talk tech,
-            feel free to reach out.
+            I&apos;m open to software development opportunities and always interested in connecting
+            with people who want to discuss my projects or work. Whether you have an opportunity or
+            just want to talk tech, feel free to reach out.
           </p>
         </div>
 

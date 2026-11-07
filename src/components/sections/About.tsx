@@ -107,15 +107,15 @@ export function About() {
           {/* Right Column: Grounded, Honest Personal Narrative */}
           <div className="lg:col-span-7 space-y-6 text-base md:text-lg leading-relaxed text-graphite/90 font-sans">
             <p className="font-medium text-lg md:text-xl text-graphite">
-              Hi, I&apos;m Amaya. I&apos;m an Information Technology student at De La Salle Lipa who likes building applications and learning how backend systems work.
+              Hi, I&apos;m Amaya. I&apos;m a fourth-year Information Technology student at De La Salle Lipa who enjoys building applications and solving problems through code.
             </p>
 
             <p>
-              Most of my programming experience comes from academic projects and building things on my own. I got drawn to backend development because I wanted to understand what happens after a button is clicked—how data gets validated, how databases keep records consistent across multiple users, and how servers handle unexpected traffic spikes.
+              I first explored programming during the pandemic, starting with Python tutorials on YouTube and later taking online coursework on Coursera. I found programming rewarding because I genuinely enjoyed the process of figuring things out, debugging issues, and seeing an idea turn into something that actually works.
             </p>
 
             <p>
-              Lately, I&apos;ve spent most of my coding time working with <strong className="text-graphite font-semibold">Java and Spring Boot</strong>, <strong className="text-graphite font-semibold">PostgreSQL</strong>, and <strong className="text-graphite font-semibold">TypeScript with Node.js and Next.js</strong>. I enjoy projects where I have to think about database structures, multi-tenant separation, and background job queues.
+              Most of my programming experience comes from academic and personal projects. I like building features, fixing problems, and seeing everything come together. Over the course of my studies, I&apos;ve worked on backend systems, REST APIs, full-stack web applications, and mobile apps—adapting to different technologies depending on what the project requires.
             </p>
 
             <div className="p-5 rounded-2xl bg-white border border-mist space-y-2.5 shadow-sm">
@@ -124,7 +124,7 @@ export function About() {
                 <span>Outside of Coding</span>
               </div>
               <p className="text-sm text-graphite/85 leading-relaxed font-sans">
-                When I&apos;m not studying or coding, I enjoy reading manga and manhwa, watching shows, and building fun side projects. That&apos;s actually how I ended up making <strong className="text-royal-violet font-semibold">Malaya</strong> (a simple webtoon reader PWA) and working on <strong className="text-royal-violet font-semibold">Kamunica</strong> (our capstone sign language learning app with 3D avatars).
+                Outside of studying and programming, I enjoy reading manga and manhwa, watching shows, and working on personal side projects. My habit of reading manga was what led me to build <strong className="text-royal-violet font-semibold">Malaya</strong>—a reading web app that connects to external comic APIs. I also worked on <strong className="text-royal-violet font-semibold">Kamunica</strong>, our capstone mobile project featuring a 3D avatar for learning Filipino Sign Language.
               </p>
             </div>
 
@@ -136,15 +136,19 @@ export function About() {
               <div className="text-xs font-mono space-y-1.5 text-graphite/85">
                 <div>
                   <span className="text-muted-mauve">Degree: </span>
-                  <span className="font-semibold text-graphite">BS in Information Technology (Expected 2027)</span>
+                  <span className="font-semibold text-graphite">BS in Information Technology (Expected Graduation: June 2027)</span>
+                </div>
+                <div>
+                  <span className="text-muted-mauve">Level: </span>
+                  <span className="font-semibold text-graphite">Fourth-Year Student</span>
                 </div>
                 <div>
                   <span className="text-muted-mauve">Relevant Coursework: </span>
-                  <span>Database Systems, Software Architecture, Distributed Computing, Web & Mobile Development</span>
+                  <span>Data Structures & Algorithms, Database Systems, Object-Oriented Programming, Networking, Web & Mobile Development</span>
                 </div>
                 <div>
                   <span className="text-muted-mauve">Status: </span>
-                  <span className="text-emerald-700 font-semibold">Looking for 2025/2026 software / backend internships</span>
+                  <span className="text-emerald-700 font-semibold">Open to software development opportunities and internships</span>
                 </div>
               </div>
             </div>

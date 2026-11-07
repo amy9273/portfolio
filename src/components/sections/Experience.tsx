@@ -24,17 +24,17 @@ interface TimelineEvent {
 
 const TIMELINE_EVENTS: TimelineEvent[] = [
   {
-    year: '2023 — 2027 (Expected)',
+    year: 'Expected Graduation: June 2027',
     role: 'Bachelor of Science in Information Technology (BSIT)',
     institution: 'De La Salle Lipa (DLSL)',
     location: 'Lipa City, Batangas, Philippines',
     description:
-      'Currently in my fourth year studying Information Technology. My coursework and personal focus center on database management, backend programming, and software systems.',
+      'Fourth-year BS Information Technology student. Coursework focuses on software engineering, database systems, and application development across web and mobile.',
     highlights: [
-      'Database Management Systems (PostgreSQL, schema design, transactions)',
-      'Systems Analysis, Software Design, and Object-Oriented Programming',
-      'Distributed Systems and Web & Mobile Application Development',
-      'Capstone Project: Kamunica (Filipino Sign Language app with 3D avatar)',
+      'Data Structures & Algorithms and Database Systems',
+      'Object-Oriented Programming and Software Development',
+      'Web & Mobile Application Development',
+      'Capstone Project: Kamunica (Filipino Sign Language learning application)',
     ],
   },
   {

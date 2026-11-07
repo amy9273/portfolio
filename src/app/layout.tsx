@@ -24,15 +24,20 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: 'Angel Amaya Balion — Student Software Developer',
   description:
-    'Personal portfolio of Angel Amaya Balion, a 4th-year Information Technology student at De La Salle Lipa. Exploring backend development, Java, Spring Boot, TypeScript, and database systems.',
+    'Personal portfolio of Angel Amaya Balion, a fourth-year Information Technology student at De La Salle Lipa. Building web applications, backend systems, and mobile apps.',
   keywords: [
     'Angel Amaya Balion',
-    'Software Developer',
+    'Amaya Balion',
+    'Student Software Developer',
     'De La Salle Lipa',
+    'Web Development',
+    'Backend Development',
+    'Mobile Development',
     'Java Spring Boot',
     'PostgreSQL',
     'TypeScript',
-    'Backend Development',
+    'Next.js',
+    'Flutter',
   ],
   authors: [{ name: 'Angel Amaya Balion', url: 'https://github.com/amy9273' }],
   creator: 'Angel Amaya Balion',
@@ -42,14 +47,14 @@ export const metadata: Metadata = {
     url: 'https://github.com/amy9273/portfolio',
     title: 'Angel Amaya Balion — Student Software Developer',
     description:
-      'Personal portfolio of Angel Amaya Balion, a 4th-year IT student at De La Salle Lipa interested in backend development, databases, and application systems.',
+      'Personal portfolio of Angel Amaya Balion, a fourth-year IT student at De La Salle Lipa building web applications, backend systems, and mobile apps.',
     siteName: 'Angel Amaya Balion Portfolio',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Angel Amaya Balion — Student Software Developer',
     description:
-      'Personal portfolio of Angel Amaya Balion, a 4th-year IT student at De La Salle Lipa interested in backend development, databases, and application systems.',
+      'Personal portfolio of Angel Amaya Balion, a fourth-year IT student at De La Salle Lipa building web applications, backend systems, and mobile apps.',
   },
   icons: {
     icon: '/images/logo.png',

@@ -55,13 +55,13 @@ export function Hero({ onReplayPreloader }: HeroProps) {
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-extrabold text-white tracking-tight leading-[1.08]">
             Hi, I&apos;m Amaya.{' '}
             <span className="bg-gradient-to-r from-pale-lilac via-electric-lavender to-royal-violet bg-clip-text text-transparent block mt-1">
-              I build web applications and backend systems.
+              I build web, backend, and mobile applications.
             </span>
           </h1>
 
           {/* Subtitle */}
           <p className="text-cloud/85 text-base sm:text-lg max-w-2xl leading-relaxed font-sans">
-            I&apos;m a 4th-year Information Technology student at De La Salle Lipa. Most of my work involves backend development with Java and Spring Boot, web apps with TypeScript, and learning how databases and queues handle data behind the scenes.
+            My name is Angel Amaya Balion, and I also go by Amaya. I&apos;m a fourth-year BS Information Technology student at De La Salle Lipa. Most of my programming experience comes from academic and personal projects where I build web applications, backend systems, and mobile apps.
           </p>
 
           {/* Action Buttons */}
@@ -105,7 +105,7 @@ export function Hero({ onReplayPreloader }: HeroProps) {
             </div>
             <div className="flex items-center gap-1.5">
               <Calendar className="w-3.5 h-3.5 text-electric-lavender" />
-              <span>OPEN FOR 2025/2026 INTERNSHIPS</span>
+              <span>EXPECTED GRADUATION: JUNE 2027</span>
             </div>
           </div>
         </div>

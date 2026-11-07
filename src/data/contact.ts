@@ -10,17 +10,17 @@ export interface ContactChannel {
 
 export const CONTACT_INFO = {
   name: 'Angel Amaya Balion',
-  role: 'Software Developer · Backend Engineering',
+  role: 'Student Software Developer',
   email: 'angelamaya.balion@gmail.com',
   phone: '09764567794',
   phoneFormatted: '+63 976 456 7794',
-  location: 'Lipa / Cabuyao, Laguna, Philippines',
-  availability: 'Open to Software & Backend Developer Internships (2025/2026)',
-  responseTime: '< 12 hours response latency',
+  location: 'Lipa City, Batangas / Cabuyao, Laguna, Philippines',
+  availability: 'Open to Software Development Opportunities & Internships',
+  responseTime: 'Replies promptly',
   channels: [
     {
       name: 'Email',
-      label: 'Direct Email Transmission',
+      label: 'Email',
       url: 'mailto:angelamaya.balion@gmail.com',
       displayValue: 'angelamaya.balion@gmail.com',
       icon: 'Mail',
@@ -29,7 +29,7 @@ export const CONTACT_INFO = {
     },
     {
       name: 'Mobile Phone',
-      label: 'Call / SMS Direct Line',
+      label: 'Phone / SMS',
       url: 'tel:09764567794',
       displayValue: '0976 456 7794',
       icon: 'Phone',

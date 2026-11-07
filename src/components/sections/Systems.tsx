@@ -115,10 +115,10 @@ export function Systems() {
               <span>04 / BEHIND THE CODE</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-display font-extrabold text-graphite tracking-tight">
-              Backend Topics I&apos;ve Explored.
+              Concepts I&apos;ve Explored.
             </h2>
             <p className="text-graphite/75 text-sm sm:text-base font-sans mt-2 max-w-2xl leading-relaxed">
-              A closer look at how I approached database multi-tenancy, concurrency, and delayed queues in my projects.
+              A closer look at implementation details and patterns I&apos;ve explored through my projects—including database schema isolation, concurrency handling, and delayed queues.
             </p>
           </div>
           <div className="font-mono text-xs text-muted-mauve flex items-center gap-2">
