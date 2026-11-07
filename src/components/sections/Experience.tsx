@@ -39,13 +39,13 @@ const TIMELINE_EVENTS: TimelineEvent[] = [
   },
   {
     year: '2021 — 2023',
-    role: 'STEAM',
+    role: 'Science, Technology, Engineering, and Mathematics (STEM)',
     institution: 'University of Cabuyao (PNC)',
     location: 'Cabuyao, Laguna, Philippines',
     description:
-      'Completed senior high school in the STEAM strand with a strong foundation in mathematics, science, and computing fundamentals.',
+      'Completed senior high school in the Science, Technology, Engineering, and Mathematics (STEM) strand with a strong foundation in mathematics, science, and computing fundamentals.',
     highlights: [
-      'Graduated with academic honors in the STEAM strand',
+      'Graduated with academic honors in the STEM strand',
       'Hands-on exposure to programming fundamentals and algorithmic problem solving',
     ],
   },

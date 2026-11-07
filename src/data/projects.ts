@@ -17,6 +17,27 @@ export interface ProjectItem {
 export const FEATURED_PROJECTS: ProjectItem[] = [
   {
     id: '01',
+    slug: 'kamunica',
+    title: 'Kamunica — Filipino Sign Language Platform',
+    tagline: 'A mobile learning app for Filipino Sign Language featuring a 3D animated avatar.',
+    tier: 1,
+    category: 'Mobile & 3D',
+    technologies: ['Flutter', 'Firebase Firestore', 'Three.js', 'WebGL', 'Blender', 'Python', 'Computer Vision'],
+    description:
+      'A mobile learning application for Filipino Sign Language developed as an academic capstone. It uses Flutter and a 3D animated avatar to help learners study and practice FSL, paired with vocabulary lookup and Python computer vision gesture detection.',
+    architectureHighlights: [
+      '3D animated avatar rendering sign language gestures in WebGL and Flutter',
+      'Speech-to-text input paired with sign vocabulary lookup',
+      'Python hand-sign recognition model integration for practice feedback',
+      'Mobile-first layout designed for student accessibility with Firebase Firestore storage',
+    ],
+    proofOfWork: 'Capstone project · 3D WebGL avatar integration',
+    githubUrl: 'https://github.com/amy9273/fsl-handsign-recognition',
+    liveUrl: 'https://kamunica-landing.onrender.com',
+    statusBadge: 'Capstone · Flutter & 3D Avatar',
+  },
+  {
+    id: '02',
     slug: 'malaya',
     title: 'Malaya — Manga & Manhwa Reader',
     tagline: 'A personal reading web application connecting to external comic APIs.',
@@ -34,27 +55,7 @@ export const FEATURED_PROJECTS: ProjectItem[] = [
     proofOfWork: 'Personal reading PWA · External API integration',
     githubUrl: 'https://github.com/amy9273/malaya',
     liveUrl: 'https://malaya-brown.vercel.app',
-    statusBadge: 'Featured · Next.js 15 PWA',
-  },
-  {
-    id: '02',
-    slug: 'b2b-saas-billing',
-    title: 'Enterprise B2B SaaS Billing & Invoicing Engine',
-    tagline: 'A multi-tenant billing backend built with Java, Spring Boot, and PostgreSQL.',
-    tier: 1,
-    category: 'Backend',
-    technologies: ['Java 21', 'Spring Boot 3.3', 'PostgreSQL', 'Flyway', 'Testcontainers', 'JUnit 5'],
-    description:
-      'A backend project built with Java and Spring Boot. It handles tenant-based access, subscription management, invoice generation, and billing-related operations using PostgreSQL. It routes connections dynamically per tenant schema and uses pessimistic locking to prevent race conditions during invoice renewals.',
-    architectureHighlights: [
-      'Schema-per-tenant isolation using Spring Boot and Hibernate connection routing',
-      'Pessimistic database locking (PESSIMISTIC_WRITE) to prevent race conditions during concurrent renewals',
-      'Flyway migration scripts for automated shared and tenant database schema updates',
-      '40 unit and integration tests written with JUnit 5 and Testcontainers',
-    ],
-    proofOfWork: '40 automated tests · Testcontainers integration',
-    githubUrl: 'https://github.com/amy9273/b2b-saas-billing',
-    statusBadge: 'Java 21 / Spring Boot',
+    statusBadge: 'PWA · Next.js 15 & Supabase',
   },
   {
     id: '03',
@@ -74,10 +75,30 @@ export const FEATURED_PROJECTS: ProjectItem[] = [
     ],
     proofOfWork: 'Delayed queues · WebSocket updates',
     githubUrl: 'https://github.com/amy9273/incident-pulse',
-    statusBadge: 'Node.js / Redis',
+    statusBadge: 'Node.js / Redis BullMQ',
   },
   {
     id: '04',
+    slug: 'b2b-saas-billing',
+    title: 'Enterprise B2B SaaS Billing & Invoicing Engine',
+    tagline: 'A multi-tenant billing backend built with Java, Spring Boot, and PostgreSQL.',
+    tier: 1,
+    category: 'Backend',
+    technologies: ['Java 21', 'Spring Boot 3.3', 'PostgreSQL', 'Flyway', 'Testcontainers', 'JUnit 5'],
+    description:
+      'A backend project built with Java and Spring Boot. It handles tenant-based access, subscription management, invoice generation, and billing-related operations using PostgreSQL. It routes connections dynamically per tenant schema and uses pessimistic locking to prevent race conditions during invoice renewals.',
+    architectureHighlights: [
+      'Schema-per-tenant isolation using Spring Boot and Hibernate connection routing',
+      'Pessimistic database locking (PESSIMISTIC_WRITE) to prevent race conditions during concurrent renewals',
+      'Flyway migration scripts for automated shared and tenant database schema updates',
+      '40 unit and integration tests written with JUnit 5 and Testcontainers',
+    ],
+    proofOfWork: '40 automated tests · Testcontainers integration',
+    githubUrl: 'https://github.com/amy9273/b2b-saas-billing',
+    statusBadge: 'Java 21 / Spring Boot',
+  },
+  {
+    id: '05',
     slug: 'api-rate-limiter',
     title: 'API Rate Limiter & Reverse Proxy',
     tagline: 'A Java-based reverse proxy focused on controlling request rates and concurrency.',
@@ -96,33 +117,15 @@ export const FEATURED_PROJECTS: ProjectItem[] = [
     githubUrl: 'https://github.com/amy9273/api-rate-limiter',
     statusBadge: 'Java 21 / Concurrency',
   },
-  {
-    id: '05',
-    slug: 'kamunica',
-    title: 'Kamunica — Filipino Sign Language Platform',
-    tagline: 'A mobile learning app for Filipino Sign Language with a 3D animated avatar.',
-    tier: 1,
-    category: 'Mobile & 3D',
-    technologies: ['Flutter', 'Firebase Firestore', 'Three.js', 'WebGL', 'Blender', 'Python', 'Computer Vision'],
-    description:
-      'A mobile learning application for Filipino Sign Language developed as an academic capstone. It uses Flutter and a 3D animated avatar to help learners study and practice FSL, paired with vocabulary lookup and Python computer vision gesture detection.',
-    architectureHighlights: [
-      '3D animated avatar rendering sign language gestures in WebGL and Flutter',
-      'Speech-to-text input paired with sign vocabulary lookup',
-      'Python hand-sign recognition model integration for practice feedback',
-      'Mobile-first layout designed for student accessibility with Firebase Firestore storage',
-    ],
-    proofOfWork: 'Capstone project · 3D WebGL avatar integration',
-    githubUrl: 'https://github.com/amy9273/fsl-handsign-recognition',
-    liveUrl: 'https://kamunica-landing.onrender.com',
-    statusBadge: 'Flutter / 3D Avatar',
-  },
+];
+
+export const SECONDARY_PROJECTS: ProjectItem[] = [
   {
     id: '06',
     slug: 'vetcare',
     title: 'VetCare — Clinic Management System',
     tagline: 'A full-stack veterinary clinic management application with MongoDB and authentication.',
-    tier: 1,
+    tier: 2,
     category: 'Full-Stack',
     technologies: ['React', 'TypeScript', 'Node.js', 'Express', 'MongoDB', 'JWT', 'Tailwind CSS'],
     description:
@@ -137,9 +140,6 @@ export const FEATURED_PROJECTS: ProjectItem[] = [
     githubUrl: 'https://github.com/amy9273/itelect4-project',
     statusBadge: 'React / Node.js / MongoDB',
   },
-];
-
-export const SECONDARY_PROJECTS: ProjectItem[] = [
   {
     id: '07',
     slug: 'gala-ph',
