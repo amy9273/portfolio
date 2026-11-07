@@ -13,7 +13,44 @@ interface GitHubHeatmapProps {
   theme?: 'emerald' | 'violet';
 }
 
-export function GitHubHeatmap({ theme = 'emerald' }: GitHubHeatmapProps) {
+interface Palette {
+  fill: string;
+  stroke: string;
+}
+
+const PALETTES: Record<'emerald' | 'violet', Palette[]> = {
+  emerald: [
+    { fill: '#161B22', stroke: '#21262D' },
+    { fill: '#0E4429', stroke: '#1B5E38' },
+    { fill: '#006D32', stroke: '#00853D' },
+    { fill: '#26A641', stroke: '#2EC44D' },
+    { fill: '#39D353', stroke: '#5FF075' },
+  ],
+  violet: [
+    { fill: '#191326', stroke: '#2D1F42' },
+    { fill: '#402068', stroke: '#542B8A' },
+    { fill: '#7041A6', stroke: '#8F53D3' },
+    { fill: '#A77BEB', stroke: '#C29DFA' },
+    { fill: '#D8C5FF', stroke: '#EDE4FF' },
+  ],
+};
+
+const MONTH_MARKERS = [
+  { label: 'Nov', week: 0 },
+  { label: 'Dec', week: 4 },
+  { label: 'Jan', week: 8 },
+  { label: 'Feb', week: 13 },
+  { label: 'Mar', week: 17 },
+  { label: 'Apr', week: 21 },
+  { label: 'May', week: 25 },
+  { label: 'Jun', week: 30 },
+  { label: 'Jul', week: 34 },
+  { label: 'Aug', week: 38 },
+  { label: 'Sep', week: 43 },
+  { label: 'Oct', week: 47 },
+];
+
+export function GitHubHeatmap({ theme = 'violet' }: GitHubHeatmapProps) {
   const [activeTheme, setActiveTheme] = useState<'emerald' | 'violet'>(theme);
   const [hoveredDay, setHoveredDay] = useState<DayContribution | null>(null);
   const [mousePos, setMousePos] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
@@ -33,53 +70,34 @@ export function GitHubHeatmap({ theme = 'emerald' }: GitHubHeatmapProps) {
     }
   });
 
-  // Color mappings
-  const colorMap = {
-    emerald: [
-      'bg-[#161B22] border-[#21262D]', // Level 0 (Empty)
-      'bg-[#0E4429] border-[#0E4429]', // Level 1
-      'bg-[#006D32] border-[#006D32]', // Level 2
-      'bg-[#26A641] border-[#26A641]', // Level 3
-      'bg-[#39D353] border-[#39D353] shadow-[0_0_8px_rgba(57,211,83,0.4)]'  // Level 4
-    ],
-    violet: [
-      'bg-[#191326] border-[#261B3B]', // Level 0
-      'bg-[#402068] border-[#402068]', // Level 1
-      'bg-[#7041A6] border-[#7041A6]', // Level 2
-      'bg-[#A77BEB] border-[#A77BEB]', // Level 3
-      'bg-[#D8C5FF] border-[#D8C5FF] shadow-[0_0_8px_rgba(216,197,255,0.4)]'  // Level 4
-    ]
-  };
-
-  const months = ['Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'];
+  const palette = PALETTES[activeTheme];
 
   return (
-    <div className="w-full bg-[#0D1117] border border-slate-800 rounded-2xl p-6 font-mono text-xs text-slate-300">
-      
+    <div className="w-full bg-[#0D1117] border border-slate-800 rounded-3xl p-5 sm:p-7 font-mono text-xs text-slate-300 shadow-xl">
       {/* Header Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-800/80">
+      <div className="flex flex-wrap items-center justify-between gap-4 mb-5 pb-4 border-b border-slate-800/80">
         <div className="flex items-center gap-3">
-          <div className="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></div>
+          <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
           <div>
             <h3 className="text-white text-sm font-bold flex items-center gap-2">
               <span>amy9273 / Activity Radar</span>
-              <span className="px-2 py-0.5 rounded text-[11px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+              <span className="px-2 py-0.5 rounded text-[10px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
                 Verified GitHub Graph
               </span>
             </h3>
-            <p className="text-slate-400 text-xs">
+            <p className="text-slate-400 text-xs mt-0.5">
               <span className="text-emerald-400 font-bold">{totalCount.toLocaleString()} contributions</span> in the last year
             </p>
           </div>
         </div>
 
         {/* Theme Palette Switcher */}
-        <div className="flex items-center gap-1.5 p-1 bg-slate-900 border border-slate-800 rounded-lg text-[11px]">
+        <div className="flex items-center gap-1.5 p-1 bg-slate-900 border border-slate-800 rounded-xl text-[11px]">
           <button
             onClick={() => setActiveTheme('emerald')}
-            className={`px-2.5 py-1 rounded transition-colors ${
+            className={`px-3 py-1 rounded-lg transition-colors ${
               activeTheme === 'emerald'
-                ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
+                ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-semibold'
                 : 'text-slate-400 hover:text-white'
             }`}
           >
@@ -87,9 +105,9 @@ export function GitHubHeatmap({ theme = 'emerald' }: GitHubHeatmapProps) {
           </button>
           <button
             onClick={() => setActiveTheme('violet')}
-            className={`px-2.5 py-1 rounded transition-colors ${
+            className={`px-3 py-1 rounded-lg transition-colors ${
               activeTheme === 'violet'
-                ? 'bg-purple-500/20 text-purple-300 border border-purple-500/30'
+                ? 'bg-purple-500/20 text-purple-300 border border-purple-500/30 font-semibold'
                 : 'text-slate-400 hover:text-white'
             }`}
           >
@@ -98,73 +116,96 @@ export function GitHubHeatmap({ theme = 'emerald' }: GitHubHeatmapProps) {
         </div>
       </div>
 
-      {/* Contribution Calendar Scroll Container */}
-      <div className="overflow-x-auto pb-2">
-        <div className="min-w-[760px]">
-          
-          {/* Months Header */}
-          <div className="flex text-[11px] text-slate-500 mb-2 pl-8 justify-between pr-4">
-            {months.map((m, idx) => (
-              <span key={idx} className="w-12 text-left">{m}</span>
+      {/* Responsive SVG Contribution Heatmap Container */}
+      <div className="overflow-x-auto pb-2 no-scrollbar">
+        <div className="min-w-[720px] w-full">
+          <svg
+            viewBox="0 0 780 128"
+            className="w-full h-auto block"
+            preserveAspectRatio="xMinYMin meet"
+            aria-label="GitHub contribution heatmap graph"
+          >
+            {/* Month Labels positioned exactly above their start weeks */}
+            {MONTH_MARKERS.map((m, idx) => (
+              <text
+                key={idx}
+                x={32 + m.week * 14}
+                y="12"
+                fill="#818CF8"
+                className="fill-slate-400"
+                fontSize="10"
+                fontFamily="ui-monospace, monospace"
+              >
+                {m.label}
+              </text>
+            ))}
+
+            {/* Weekday Labels */}
+            <text x="6" y="38" fill="#64748B" fontSize="9" fontFamily="sans-serif">
+              Mon
+            </text>
+            <text x="6" y="66" fill="#64748B" fontSize="9" fontFamily="sans-serif">
+              Wed
+            </text>
+            <text x="6" y="94" fill="#64748B" fontSize="9" fontFamily="sans-serif">
+              Fri
+            </text>
+
+            {/* Contribution Cells */}
+            {weeks.map((week, wIdx) => {
+              const xPos = 32 + wIdx * 14;
+              return week.map((day, dIdx) => {
+                const yPos = 20 + dIdx * 14;
+                const cellColors = palette[day.level] || palette[0]!;
+                return (
+                  <rect
+                    key={`${wIdx}-${dIdx}`}
+                    x={xPos}
+                    y={yPos}
+                    width="11"
+                    height="11"
+                    rx="2.5"
+                    fill={cellColors.fill}
+                    stroke={cellColors.stroke}
+                    strokeWidth="1"
+                    className="cursor-pointer transition-all duration-100 hover:opacity-80"
+                    onMouseEnter={(e) => {
+                      setHoveredDay(day);
+                      setMousePos({ x: e.clientX, y: e.clientY });
+                    }}
+                    onMouseLeave={() => setHoveredDay(null)}
+                  />
+                );
+              });
+            })}
+          </svg>
+        </div>
+      </div>
+
+      {/* Bottom Footer & Legend */}
+      <div className="flex flex-wrap items-center justify-between gap-3 text-[11px] text-slate-500 mt-4 pt-3 border-t border-slate-900">
+        <a
+          href="https://github.com/amy9273"
+          target="_blank"
+          rel="noreferrer"
+          className="text-slate-400 hover:text-white transition-colors flex items-center gap-1.5"
+        >
+          <span>View live on GitHub (@amy9273)</span>
+          <span>↗</span>
+        </a>
+
+        <div className="flex items-center gap-2">
+          <span>Less</span>
+          <div className="flex gap-1 items-center">
+            {palette.map((p, idx) => (
+              <div
+                key={idx}
+                className="w-2.5 h-2.5 rounded-[2px]"
+                style={{ backgroundColor: p.fill, border: `1px solid ${p.stroke}` }}
+              />
             ))}
           </div>
-
-          {/* Grid with Day Labels */}
-          <div className="flex gap-1.5 items-start">
-            
-            {/* Weekday Labels */}
-            <div className="flex flex-col justify-between h-[96px] text-[10px] text-slate-500 pr-2 pt-1 font-sans">
-              <span>Mon</span>
-              <span>Wed</span>
-              <span>Fri</span>
-            </div>
-
-            {/* Columns of Weeks */}
-            <div className="flex gap-[3px]">
-              {weeks.map((week, wIdx) => (
-                <div key={wIdx} className="flex flex-col gap-[3px]">
-                  {week.map((day, dIdx) => (
-                    <div
-                      key={dIdx}
-                      onMouseEnter={(e) => {
-                        setHoveredDay(day);
-                        setMousePos({ x: e.clientX, y: e.clientY });
-                      }}
-                      onMouseLeave={() => setHoveredDay(null)}
-                      className={`w-[11px] h-[11px] rounded-[2.5px] border transition-all duration-150 cursor-pointer hover:scale-125 hover:z-20 ${
-                        colorMap[activeTheme][day.level] || colorMap[activeTheme][0]
-                      }`}
-                    />
-                  ))}
-                </div>
-              ))}
-            </div>
-
-          </div>
-
-          {/* Bottom Footer & Legend */}
-          <div className="flex items-center justify-between text-[11px] text-slate-500 mt-4 pt-3 border-t border-slate-900">
-            <a
-              href="https://github.com/amy9273"
-              target="_blank"
-              rel="noreferrer"
-              className="text-slate-400 hover:text-emerald-400 transition-colors flex items-center gap-1.5"
-            >
-              <span>View live on GitHub (@amy9273)</span>
-              <span>↗</span>
-            </a>
-
-            <div className="flex items-center gap-1.5">
-              <span>Less</span>
-              <div className="flex gap-1">
-                {colorMap[activeTheme].map((cls, idx) => (
-                  <div key={idx} className={`w-[10px] h-[10px] rounded-[2px] border ${cls}`} />
-                ))}
-              </div>
-              <span>More</span>
-            </div>
-          </div>
-
+          <span>More</span>
         </div>
       </div>
 
@@ -180,7 +221,6 @@ export function GitHubHeatmap({ theme = 'emerald' }: GitHubHeatmapProps) {
           on {hoveredDay.date}
         </div>
       )}
-
     </div>
   );
 }
