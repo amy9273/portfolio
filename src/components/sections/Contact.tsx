@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   Mail,
   Phone,
@@ -8,61 +8,32 @@ import {
   Github,
   Facebook,
   Download,
-  Copy,
-  Check,
   Send,
   MessageSquare,
   ArrowUpRight,
+  CheckCircle2,
 } from 'lucide-react';
 import { CONTACT_INFO } from '@/data/contact';
 
 export function Contact() {
   const [senderName, setSenderName] = useState('');
   const [senderEmail, setSenderEmail] = useState('');
-  const [inquiryType, setInquiryType] = useState('Internship Opportunity (2025/2026)');
+  const [inquiryType, setInquiryType] = useState('Internship Opportunity');
   const [message, setMessage] = useState('');
-  const [copiedPayload, setCopiedPayload] = useState(false);
-  const [timestamp, setTimestamp] = useState('2026-11-07T08:00:00.000Z');
-
-  // Avoid hydration mismatch by updating timestamp only after mount on the client
-  useEffect(() => {
-    setTimestamp(new Date().toISOString());
-  }, []);
-
-  const payload = {
-    recipient: CONTACT_INFO.email,
-    sender: senderName || 'Recruiter / Developer',
-    replyTo: senderEmail || 'your-email@domain.com',
-    subject: inquiryType,
-    message:
-      message ||
-      'Hi Amaya, I saw your portfolio and would like to talk about an internship or project...',
-    timestamp,
-  };
-
-  const jsonString = JSON.stringify(payload, null, 2);
-
-  const handleCopyJSON = async () => {
-    try {
-      await navigator.clipboard.writeText(jsonString);
-      setCopiedPayload(true);
-      setTimeout(() => setCopiedPayload(false), 2500);
-    } catch {
-      // ignore
-    }
-  };
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSendMail = (e: React.FormEvent) => {
     e.preventDefault();
     const subject = encodeURIComponent(
-      `[Portfolio] ${inquiryType} from ${senderName || 'Recruiter'}`
+      `[Portfolio] ${inquiryType} from ${senderName || 'Visitor'}`
     );
     const body = encodeURIComponent(
-      `Hi Amaya,\n\n${message || 'I came across your portfolio and wanted to reach out.'}\n\nBest,\n${
+      `Hi Amaya,\n\n${message || 'I came across your portfolio and wanted to reach out.'}\n\nFrom: ${
         senderName || 'Anonymous'
-      }\nEmail: ${senderEmail || 'N/A'}`
+      }\nReply-To: ${senderEmail || 'N/A'}`
     );
     window.location.href = `mailto:${CONTACT_INFO.email}?subject=${subject}&body=${body}`;
+    setIsSubmitted(true);
   };
 
   return (
@@ -142,31 +113,16 @@ export function Contact() {
             </div>
           </div>
 
-          {/* Right Column: Contact Note Composer */}
+          {/* Right Column: Direct Message Sender Form */}
           <div className="lg:col-span-7 bg-[#130C1E] border border-royal-violet/35 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6">
             <div className="flex items-center justify-between border-b border-royal-violet/25 pb-4">
               <div className="flex items-center gap-2 font-mono text-xs text-muted-mauve">
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
-                <span className="text-white font-semibold">Quick Message Composer</span>
+                <span className="text-white font-semibold">Send a Direct Message</span>
               </div>
-              <button
-                onClick={handleCopyJSON}
-                type="button"
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-aubergine border border-royal-violet/40 hover:border-electric-lavender text-pale-lilac text-xs font-mono transition-colors"
-                title="Copy JSON formatted note"
-              >
-                {copiedPayload ? (
-                  <>
-                    <Check className="w-3.5 h-3.5 text-emerald-400" />
-                    <span className="text-emerald-400">COPIED</span>
-                  </>
-                ) : (
-                  <>
-                    <Copy className="w-3.5 h-3.5" />
-                    <span>COPY AS JSON</span>
-                  </>
-                )}
-              </button>
+              <span className="text-[11px] font-mono text-muted-mauve">
+                To: angelamaya.balion@gmail.com
+              </span>
             </div>
 
             <form onSubmit={handleSendMail} className="space-y-4">
@@ -177,6 +133,7 @@ export function Contact() {
                   </label>
                   <input
                     type="text"
+                    required
                     value={senderName}
                     onChange={(e) => setSenderName(e.target.value)}
                     placeholder="e.g. John Doe / Tech Co"
@@ -190,6 +147,7 @@ export function Contact() {
                   </label>
                   <input
                     type="email"
+                    required
                     value={senderEmail}
                     onChange={(e) => setSenderEmail(e.target.value)}
                     placeholder="john@example.com"
@@ -207,14 +165,10 @@ export function Contact() {
                   onChange={(e) => setInquiryType(e.target.value)}
                   className="w-full px-4 py-2.5 rounded-xl bg-aubergine/70 border border-royal-violet/40 focus:border-electric-lavender focus:outline-none text-white font-sans text-sm transition-colors"
                 >
-                  <option value="Internship Opportunity (2025/2026)">
-                    Internship Opportunity (2025/2026)
-                  </option>
-                  <option value="Full-Time / Graduating Discussion">
-                    Full-Time Discussion (2027)
-                  </option>
+                  <option value="Internship Opportunity">Internship Opportunity</option>
+                  <option value="Full-Time Opportunity">Full-Time Opportunity</option>
                   <option value="Project Collaboration">Project Collaboration</option>
-                  <option value="General Question">General Question or Tech Chat</option>
+                  <option value="General Question or Tech Chat">General Question or Tech Chat</option>
                 </select>
               </div>
 
@@ -223,7 +177,8 @@ export function Contact() {
                   Message
                 </label>
                 <textarea
-                  rows={3}
+                  rows={4}
+                  required
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="Tell me a bit about what you're working on or what you'd like to talk about..."
@@ -231,31 +186,29 @@ export function Contact() {
                 />
               </div>
 
-              <div className="pt-2 flex flex-wrap items-center justify-between gap-4">
-                <button
-                  type="submit"
-                  className="px-6 py-3 rounded-xl bg-royal-violet hover:bg-electric-lavender text-white font-mono text-xs font-semibold tracking-wider transition-all duration-300 shadow-lg shadow-royal-violet/30 active:scale-95 flex items-center gap-2"
-                >
-                  <Send className="w-4 h-4" />
-                  <span>OPEN EMAIL CLIENT</span>
-                </button>
+              <div className="pt-2 space-y-3">
+                <div className="flex flex-wrap items-center justify-between gap-4">
+                  <button
+                    type="submit"
+                    className="px-6 py-3.5 rounded-xl bg-royal-violet hover:bg-electric-lavender text-white font-mono text-xs font-semibold tracking-wider transition-all duration-300 shadow-lg shadow-royal-violet/30 active:scale-95 flex items-center gap-2"
+                  >
+                    <Send className="w-4 h-4" />
+                    <span>SEND MESSAGE</span>
+                  </button>
 
-                <span className="text-[11px] font-mono text-muted-mauve">
-                  Or email directly: angelamaya.balion@gmail.com
-                </span>
+                  <span className="text-[11px] font-mono text-muted-mauve">
+                    Direct email: angelamaya.balion@gmail.com
+                  </span>
+                </div>
+
+                {isSubmitted && (
+                  <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-mono flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-400" />
+                    <span>Opening your email client... You can also write directly to angelamaya.balion@gmail.com</span>
+                  </div>
+                )}
               </div>
             </form>
-
-            {/* Live JSON Preview with hydration suppression */}
-            <div className="pt-4 border-t border-royal-violet/20">
-              <div className="font-mono text-[10px] text-muted-mauve uppercase mb-1.5 flex items-center justify-between">
-                <span>Formatted Payload Preview</span>
-                <span className="text-electric-lavender">JSON</span>
-              </div>
-              <pre className="p-3.5 rounded-xl bg-[#0F0818] border border-royal-violet/20 font-mono text-[11px] text-pale-lilac/90 overflow-x-auto">
-                <code suppressHydrationWarning>{jsonString}</code>
-              </pre>
-            </div>
           </div>
         </div>
 
