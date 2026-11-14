@@ -84,15 +84,15 @@ export function Experience() {
   ];
 
   return (
-    <section
-      id="experience"
-      className="bg-aubergine text-cloud py-24 px-5 md:px-8 orbital-grid border-t border-royal-violet/30 relative z-20"
-    >
-      <div className="max-w-7xl mx-auto space-y-16">
-        {/* ========================================================== */}
-        {/* PART 1: CHRONOLOGICAL EDUCATION TIMELINE                   */}
-        {/* ========================================================== */}
-        <div className="space-y-10">
+    <>
+      {/* ========================================================== */}
+      {/* PART 1: CHRONOLOGICAL EDUCATION TIMELINE                   */}
+      {/* ========================================================== */}
+      <section
+        id="experience"
+        className="bg-aubergine text-cloud pt-24 pb-12 px-5 md:px-8 orbital-grid border-t border-royal-violet/30 relative z-20"
+      >
+        <div className="max-w-7xl mx-auto space-y-10">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-royal-violet/30 pb-6">
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-royal-violet/20 border border-royal-violet/40 text-electric-lavender font-mono text-xs font-semibold mb-2">
@@ -149,11 +149,16 @@ export function Experience() {
             ))}
           </div>
         </div>
+      </section>
 
-        {/* ========================================================== */}
-        {/* PART 2: 9 COURSE CERTIFICATES                               */}
-        {/* ========================================================== */}
-        <div id="certifications" className="space-y-8 pt-8 border-t border-royal-violet/30 scroll-mt-24">
+      {/* ========================================================== */}
+      {/* PART 2: 9 COURSE CERTIFICATES                               */}
+      {/* ========================================================== */}
+      <section
+        id="certifications"
+        className="bg-aubergine text-cloud pt-12 pb-24 px-5 md:px-8 orbital-grid border-t border-royal-violet/20 relative z-20 scroll-mt-24"
+      >
+        <div className="max-w-7xl mx-auto space-y-8">
           <div className="space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-royal-violet/20 border border-royal-violet/40 text-electric-lavender font-mono text-xs font-semibold">
               <Award className="w-3.5 h-3.5" />
@@ -259,7 +264,7 @@ export function Experience() {
             ))}
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

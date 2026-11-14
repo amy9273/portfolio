@@ -28,18 +28,25 @@ export function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 30);
 
-      // Simple active section spy
       const sections = ['hero', 'about', 'work', 'systems', 'experience', 'certifications', 'contact'];
+
+      // If scrolled to bottom of page, highlight contact
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 60) {
+        setActiveSection('contact');
+        return;
+      }
+
+      let current = 'hero';
       for (const sectionId of sections) {
         const el = document.getElementById(sectionId);
         if (el) {
           const rect = el.getBoundingClientRect();
-          if (rect.top <= 120 && rect.bottom >= 120) {
-            setActiveSection(sectionId);
-            break;
+          if (rect.top <= 160) {
+            current = sectionId;
           }
         }
       }
+      setActiveSection(current);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -74,6 +81,7 @@ export function Navbar() {
                 <Link
                   key={item.label}
                   href={item.href}
+                  onClick={() => setActiveSection(sectionId)}
                   className={`px-3.5 py-1.5 rounded-full text-xs font-mono tracking-wider transition-all duration-200 ${
                     isActive
                       ? 'bg-electric-lavender/20 text-electric-lavender font-bold'
@@ -122,7 +130,10 @@ export function Navbar() {
               <Link
                 key={item.label}
                 href={item.href}
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => {
+                  setActiveSection(item.href.replace('#', ''));
+                  setMobileMenuOpen(false);
+                }}
                 className="block text-2xl font-display font-bold text-white hover:text-electric-lavender transition-colors py-2"
               >
                 {item.label}
